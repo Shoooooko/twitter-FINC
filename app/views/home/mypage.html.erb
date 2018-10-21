@@ -1,0 +1,30 @@
+<h1><%="#{current_user.name}さんのpage"%></h1>
+<% if user_signed_in? %>
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+<% else %>
+<%= link_to('Login', new_user_session_path)  %>  
+<% end %>
+<hr>
+<p class="text-right"><%= link_to 'New Post', new_post_path %></P>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mypost.each do |mypost| %>
+      <tr>
+        <td><%= mypost.title %></td>
+        <td><%= mypost.body %></td>
+        <td colspan="2"></td>
+        <td><%= link_to 'Show', mypost %></td>
+        <td><%= link_to 'Edit', edit_mypost_path(mypost) %></td>
+        <td><%= link_to 'Destroy', mypost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

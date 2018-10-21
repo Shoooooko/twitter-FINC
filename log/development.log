@@ -161,3 +161,1220 @@ Processing by Users::RegistrationsController#new as HTML
 Completed 200 OK in 2298ms (Views: 2081.8ms | ActiveRecord: 125.8ms)
 
 
+Started GET "/" for ::1 at 2018-10-21 12:34:49 +0900
+  [1m[35m (17.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (28.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Library/Ruby/Gems/2.3.0/gems/railties-5.2.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Library/Ruby/Gems/2.3.0/gems/railties-5.2.0/lib/rails/templates/rails/welcome/index.html.erb (7.3ms)
+Completed 200 OK in 62ms (Views: 23.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2018-10-21 12:34:57 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (88.1ms)
+Completed 200 OK in 814ms (Views: 656.9ms | ActiveRecord: 88.9ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 12:35:20 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4tQLSd6qeEBiWhAOdLC67Rmle1FNhhGMHkNwGJ+denE7lrercRjUb4IiPRFP0THU1bvRTYPkqxAVSEsuY9rnSQ==", "user"=>{"email"=>"shoko@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (4.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (27.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'shoko@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (13.7ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('shoko@gmail.com', '$2a$11$9m/i1soloP7Ch/qByLpqOO8GSrNa6kjeGs3g9y5jQzlRYbuHa6YFG', '2018-10-21 03:35:20', '2018-10-21 03:35:20')[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (44.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 668ms (ActiveRecord: 89.2ms)
+
+
+
+NameError - undefined local variable or method `mypage_home_path' for #<Users::RegistrationsController:0x007f8e1d079380>:
+  app/controllers/application_controller.rb:5:in `after_sign_in_path_for'
+
+Started POST "/__better_errors/bcb41da18e2bef80/variables" for ::1 at 2018-10-21 12:35:21 +0900
+Started POST "/users" for ::1 at 2018-10-21 12:39:28 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4tQLSd6qeEBiWhAOdLC67Rmle1FNhhGMHkNwGJ+denE7lrercRjUb4IiPRFP0THU1bvRTYPkqxAVSEsuY9rnSQ==", "user"=>{"email"=>"shoko@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (2.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'shoko@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 449ms (Views: 99.8ms | ActiveRecord: 148.8ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 12:39:50 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VcQu4+sUe2Mx+EVchdF2Asfg441wu7jhdr2yJY3B4KeMhpIBRKbXTNGAaEO+sP07C/5Jkb7ZAn19tokTcYZ9nw==", "user"=>{"email"=>"shokoko@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'shokoko@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('shokoko@gmail.com', '$2a$11$tziN1AamcXw0sbv2BnKwReulfC4Pj6al.L5NuC6XlANe2tIvQL3mW', '2018-10-21 03:39:50', '2018-10-21 03:39:50')[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (100.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 600ms (ActiveRecord: 103.9ms)
+
+
+
+NameError - undefined local variable or method `mypage_home_path' for #<Users::RegistrationsController:0x007f8e1d997020>:
+  app/controllers/application_controller.rb:5:in `after_sign_in_path_for'
+
+Started POST "/__better_errors/ca76b52e519c8abc/variables" for ::1 at 2018-10-21 12:39:51 +0900
+Started GET "/users" for ::1 at 2018-10-21 12:41:09 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started POST "/__better_errors/ca76b52e519c8abc/variables" for ::1 at 2018-10-21 12:42:19 +0900
+Started POST "/users" for ::1 at 2018-10-21 12:44:10 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VcQu4+sUe2Mx+EVchdF2Asfg441wu7jhdr2yJY3B4KeMhpIBRKbXTNGAaEO+sP07C/5Jkb7ZAn19tokTcYZ9nw==", "user"=>{"email"=>"shokoko@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (3.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'shokoko@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 376ms (Views: 98.6ms | ActiveRecord: 35.9ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 12:44:30 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4UeW1WIMnMehi44zVXbli2nl8206a63Pu2hX2vwssog4BSo3zb4w6EHzoyxuF26ypftZcfQJF1OwY2zsAGsvsA==", "user"=>{"email"=>"shokoko@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'shokoko@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 302ms (Views: 96.9ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 12:44:54 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vRboOzPYjR8ZYXbqxR+vimbLNPRLQByDgQ7FSxRjSmdkVFTZnGohMPkZW/X+fiSzqtWe6IUiph+KBf596CTXXw==", "user"=>{"email"=>"sunday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'sunday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('sunday@gmail.com', '$2a$11$ks/ke4c8b7jM9iUQQmRzU.cXGFDo9qvLlZDnQDnxVDxTYsRcIwuke', '2018-10-21 03:44:54', '2018-10-21 03:44:54')[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (32.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 619ms (ActiveRecord: 33.8ms)
+
+
+
+NameError - undefined local variable or method `mypage_home_path' for #<Users::RegistrationsController:0x007f8e16451f18>:
+  app/controllers/application_controller.rb:8:in `after_sign_in_path_for'
+
+Started POST "/__better_errors/aebff580ee8f9385/variables" for ::1 at 2018-10-21 12:44:55 +0900
+Started POST "/users" for ::1 at 2018-10-21 12:46:06 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vRboOzPYjR8ZYXbqxR+vimbLNPRLQByDgQ7FSxRjSmdkVFTZnGohMPkZW/X+fiSzqtWe6IUiph+KBf596CTXXw==", "user"=>{"email"=>"sunday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'sunday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (24.1ms)
+Completed 200 OK in 417ms (Views: 133.3ms | ActiveRecord: 36.6ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 12:46:42 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ChRS3PGC8d1qq2fQEi+vxVj39NXWjevPy+iTArQfaD/TVu4+XjBd8orTSs8pTiT8lOleyRjvUVPA46g0SFj1Bw==", "user"=>{"email"=>"saturday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (5.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'saturday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('saturday@gmail.com', '$2a$11$MAhHbdTaN8TJ228R153ubuH6Iij.03mdn2POdxwYc5e9qvim0Bdiu', '2018-10-21 03:46:43', '2018-10-21 03:46:43')[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (68.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 991ms (ActiveRecord: 75.9ms)
+
+
+
+NameError - undefined local variable or method `index_home_path' for #<Users::RegistrationsController:0x007f8e1eb4c950>:
+  app/controllers/application_controller.rb:8:in `after_sign_in_path_for'
+
+Started POST "/__better_errors/0556e9d20d455d37/variables" for ::1 at 2018-10-21 12:46:44 +0900
+Started POST "/users" for ::1 at 2018-10-21 12:55:52 +0900
+  [1m[35m (11.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ChRS3PGC8d1qq2fQEi+vxVj39NXWjevPy+iTArQfaD/TVu4+XjBd8orTSs8pTiT8lOleyRjvUVPA46g0SFj1Bw==", "user"=>{"email"=>"saturday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (8.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'saturday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (22.9ms)
+Completed 200 OK in 436ms (Views: 142.8ms | ActiveRecord: 53.9ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 12:56:49 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d7SOtB0U3eYeV/kxV7u+9De0zEN8oX1Z2eWqtz3gv1Ou9jJWsqZxyf4v1C5s2jXN+6pmX7LDx8XS7pGBwaciaw==", "user"=>{"email"=>"thursday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'thursday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (12.0ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('thursday@gmail.com', '$2a$11$efNJ.syWaej0y7LBvDckPeKufWFk4WQgbe3XBlKMKRn05bnaIPPQC', '2018-10-21 03:56:49', '2018-10-21 03:56:49')[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (10.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 584ms (ActiveRecord: 22.9ms)
+
+
+
+NameError - undefined local variable or method `index_home_path' for #<Users::RegistrationsController:0x007f8e1ece7710>:
+  app/controllers/application_controller.rb:8:in `after_sign_in_path_for'
+
+Started POST "/__better_errors/e42d3f80d10faf1d/variables" for ::1 at 2018-10-21 12:56:50 +0900
+Started POST "/users" for ::1 at 2018-10-21 13:07:00 +0900
+  [1m[35m (32.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (7.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d7SOtB0U3eYeV/kxV7u+9De0zEN8oX1Z2eWqtz3gv1Ou9jJWsqZxyf4v1C5s2jXN+6pmX7LDx8XS7pGBwaciaw==", "user"=>{"email"=>"thursday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'thursday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (53.5ms)
+Completed 200 OK in 871ms (Views: 519.0ms | ActiveRecord: 40.9ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 13:07:16 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s6jEj00vsltBf5wXUjoC+gXeOtuw+s2zqu3rWDIvq3xq6nht4p0edKEHsQhpW4nDycCQx36Ydy+h5tBuzmg2RA==", "user"=>{"email"=>"monday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (3.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'monday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (17.4ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('monday@gmail.com', '$2a$11$ZWlTKduAwYLn8QcDcDRuDeT.S2vE5SyzIq/lI2AjYGnltZAPbXK36', '2018-10-21 04:07:16', '2018-10-21 04:07:16')[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (8.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 626ms (ActiveRecord: 30.0ms)
+
+
+
+NameError - undefined local variable or method `mypage_home_path' for #<Users::RegistrationsController:0x007feb54355830>
+Did you mean?  home_mypage_path:
+  app/controllers/application_controller.rb:8:in `after_sign_in_path_for'
+
+Started POST "/__better_errors/cea35a44d0337a7f/variables" for ::1 at 2018-10-21 13:07:17 +0900
+Started POST "/users" for ::1 at 2018-10-21 13:07:43 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s6jEj00vsltBf5wXUjoC+gXeOtuw+s2zqu3rWDIvq3xq6nht4p0edKEHsQhpW4nDycCQx36Ydy+h5tBuzmg2RA==", "user"=>{"email"=>"monday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'monday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 410ms (Views: 73.6ms | ActiveRecord: 42.0ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 13:07:58 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Gb6IsCIn7T7Fc/ws4K7VAq4qkzZnfa3QoOVaXlRNlknA/DRSjZVBESUL0TPbz147YjQ5KqkfF0yr7mFoqAoLcQ==", "user"=>{"email"=>"tuesday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'tuesday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('tuesday@gmail.com', '$2a$11$5WOc.DrLoDwJpF.yxRYTHuZZuZIeNhtGetJNKNBOk8CCTW9hgc9JK', '2018-10-21 04:07:58', '2018-10-21 04:07:58')[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (83.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home/mypage
+Completed 302 Found in 285ms (ActiveRecord: 85.1ms)
+
+
+Started GET "/home/mypage" for ::1 at 2018-10-21 13:07:59 +0900
+Processing by HomeController#mypage as HTML
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering home/mypage.html.erb within layouts/application
+  [1m[36mPost Load (29.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered home/mypage.html.erb within layouts/application (567.5ms)
+Completed 500 Internal Server Error in 627ms (ActiveRecord: 36.9ms)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+
+NameError - undefined local variable or method `new_posts_path' for #<#<Class:0x007feb59ae8520>:0x007feb534482c0>
+Did you mean?  new_post_path:
+  app/views/home/mypage.html.erb:8:in `_app_views_home_mypage_html_erb__2382350862187445495_70324399328620'
+
+Started POST "/__better_errors/39673046710f8a35/variables" for ::1 at 2018-10-21 13:08:00 +0900
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.3ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.3ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7 LIMIT 11[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Started GET "/home/mypage" for ::1 at 2018-10-21 13:08:27 +0900
+Processing by HomeController#mypage as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering home/mypage.html.erb within layouts/application
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7[0m
+  ↳ app/views/home/mypage.html.erb:19
+  Rendered home/mypage.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 201ms (Views: 147.4ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/users" for ::1 at 2018-10-21 13:10:18 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:10:32 +0900
+
+LoadError - Unable to autoload constant Users::SessionsController, expected /Users/Shoko/Desktop/Finc/sns/app/controllers/users/sessions_controller.rb to define it:
+
+Started POST "/__better_errors/dc9c30459ee8e392/variables" for ::1 at 2018-10-21 13:10:32 +0900
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:11:28 +0900
+Processing by Users::SessionsController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:12:56 +0900
+Redirected to http://localhost:3000/home/mypage
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 422984ms (ActiveRecord: 39.5ms)
+
+
+Processing by Users::SessionsController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home/mypage
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 99ms (ActiveRecord: 63.6ms)
+
+
+Started GET "/home/mypage" for ::1 at 2018-10-21 13:19:06 +0900
+  [1m[35m (11.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#mypage as HTML
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:25:13 +0900
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering home/mypage.html.erb within layouts/application
+  [1m[36mPost Load (3.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7[0m
+  ↳ app/views/home/mypage.html.erb:19
+  Rendered home/mypage.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 700ms (Views: 503.5ms | ActiveRecord: 67.7ms)
+
+
+Processing by Users::SessionsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home/mypage
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 67ms (ActiveRecord: 16.2ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:25:31 +0900
+  [1m[35m (4.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Users::SessionsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home/mypage
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 95ms (ActiveRecord: 20.4ms)
+
+
+Started GET "/home/mypage" for ::1 at 2018-10-21 13:25:31 +0900
+Processing by HomeController#mypage as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering home/mypage.html.erb within layouts/application
+  [1m[36mPost Load (3.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7[0m
+  ↳ app/views/home/mypage.html.erb:19
+  Rendered home/mypage.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 477ms (Views: 449.8ms | ActiveRecord: 7.2ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 13:26:04 +0900
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"KI6ew0RJiRpGsi0rRJ99K5ayU4WodgsgzB2Ry6ml8vbxzCIh6/slNabKADR//vYSWqz5mWYUsbzHFqr9VeJvzg=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (6.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (7.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 41ms (ActiveRecord: 14.5ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:26:04 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (58.9ms)
+Completed 200 OK in 202ms (Views: 186.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/mypage" for ::1 at 2018-10-21 13:26:12 +0900
+Processing by HomeController#mypage as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:26:13 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 98ms (Views: 96.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2018-10-21 13:28:53 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 241ms (Views: 160.6ms | ActiveRecord: 34.2ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 13:29:07 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vC8Jkzf+38PmUrS5++gV4CVx3kRbfGEtTi8lu4SJjOCSkjM+QGP0GNkbQx2MyTauSsO0TCFBAXK3p1WW44vvbg==", "user"=>{"name"=>"", "email"=>"sunday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (3.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'sunday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 353ms (Views: 119.5ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 13:29:22 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rslXj0gZFFL0CkiaRYxlhEmJjVIO9WkR0+j/WOHRnyOAdG0iP4Q/ictDvz4yrUbKJjvnWnTICU4qYI91htP8rQ==", "user"=>{"name"=>"sunday", "email"=>"sunday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'sunday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 319ms (Views: 123.1ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 13:29:35 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"C+FQRa7SVHFN+ue64CAxHtyj6/jp5hZMX10rRe7+zNAlXGro2U9/qnKzEB6XARJQsxGB8JPbdhOm1VtoifyvXg==", "user"=>{"name"=>"nil", "email"=>"sunday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'sunday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (5.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 320ms (Views: 122.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:29:46 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 53ms (Views: 50.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2018-10-21 13:29:55 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yjEMIrLsnI1SGgffoM6vBbAOscGPyze4pJ0j7qxjORB9AiOTsQ3wVAI2+ONxwWI+jzjLex3HUC9rUqhHC5Rpbg==", "user"=>{"name"=>"", "email"=>"sunday@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'sunday@gmail.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home/mypage
+Completed 302 Found in 183ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/home/mypage" for ::1 at 2018-10-21 13:29:55 +0900
+Processing by HomeController#mypage as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering home/mypage.html.erb within layouts/application
+  [1m[36mPost Load (37.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3[0m
+  ↳ app/views/home/mypage.html.erb:19
+  Rendered home/mypage.html.erb within layouts/application (43.2ms)
+Completed 200 OK in 113ms (Views: 54.8ms | ActiveRecord: 46.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 13:30:09 +0900
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"U92p1i/WFZz6hLyR4jlzr2DkAGCxWVigzb7XDaTApx+zvlExtcpowotZJ4F4Xr33lG5oRi3pwSQMYcwx+Z5ZFw=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 319ms (ActiveRecord: 1.1ms)
+
+
+
+NameError - undefined local variable or method `home_index_path' for #<Users::SessionsController:0x007f96f10e3b40>
+Did you mean?  home_mypage_path:
+  app/controllers/application_controller.rb:14:in `after_sign_out_path_for'
+
+Started POST "/__better_errors/b48fb5f2769e742d/variables" for ::1 at 2018-10-21 13:30:10 +0900
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 13:30:48 +0900
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"U92p1i/WFZz6hLyR4jlzr2DkAGCxWVigzb7XDaTApx+zvlExtcpowotZJ4F4Xr33lG5oRi3pwSQMYcwx+Z5ZFw=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home/index
+Completed 302 Found in 157ms (ActiveRecord: 119.5ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 13:30:48 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:30:48 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 79ms (Views: 77.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2018-10-21 13:30:56 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 67ms (Views: 64.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2018-10-21 13:31:39 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5ZK3HAU/VL3eiTTe2gvIFJNJIXabhO0R5AodifwaQYr15w35UtIOXPubPd/eFjOHVI/NZmxt/Fu0srceMm3Sxw==", "user"=>{"name"=>"wednes", "email"=>"wednesday@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'wednesday@gmail.com' LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (25.4ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `name`, `created_at`, `updated_at`) VALUES ('wednesday@gmail.com', '$2a$11$03z/xb2txBwGTaks9a.Yq.gPqRTZ08QorwmeIJOBGZOu5hewMoc.q', 'wednes', '2018-10-21 04:31:39', '2018-10-21 04:31:39')[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (96.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home/mypage
+Completed 302 Found in 377ms (ActiveRecord: 125.4ms)
+
+
+Started GET "/home/mypage" for ::1 at 2018-10-21 13:31:40 +0900
+Processing by HomeController#mypage as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering home/mypage.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 8[0m
+  ↳ app/views/home/mypage.html.erb:19
+  Rendered home/mypage.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 229ms (Views: 93.5ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/posts/new" for ::1 at 2018-10-21 13:31:45 +0900
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (17.3ms)
+  Rendered posts/new.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 136ms (Views: 83.5ms | ActiveRecord: 23.3ms)
+
+
+Started POST "/posts" for ::1 at 2018-10-21 13:32:03 +0900
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CYlH9l6y3qAANrBihs+Pcvq/5UcUKbBMOT58SN34egs65DDUZ23GDUgzxtRABYKLzyr/RTupmjC9OQNJ/yrfiA==", "post"=>{"title"=>"はじめて", "body"=>"loginできた", "trans"=>"", "user_id"=>""}, "commit"=>"Create Post"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mPost Create (15.6ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `user_id`, `created_at`, `updated_at`) VALUES ('はじめて', 'loginできた', 8, '2018-10-21 04:32:03', '2018-10-21 04:32:03')[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[35m (44.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 118ms (ActiveRecord: 61.5ms)
+
+
+Started GET "/posts/1" for ::1 at 2018-10-21 13:32:03 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/views/posts/show.html.erb:20
+  Rendered posts/show.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 153ms (Views: 141.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts" for ::1 at 2018-10-21 13:32:09 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/views/posts/index.html.erb:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/views/posts/index.html.erb:22
+  Rendered posts/index.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 90ms (Views: 76.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/posts/new" for ::1 at 2018-10-21 13:32:12 +0900
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (5.3ms)
+  Rendered posts/new.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 60ms (Views: 46.7ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/posts" for ::1 at 2018-10-21 13:32:44 +0900
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MQrmLYBlJ3zuf18UHq85vPAU92xt1KO/sRtrKW3CB/sCZ5EPubo/0aZ6KaLYZTRFxYHtbkJUicM1HBQoTxCieA==", "post"=>{"title"=>"onemore", "body"=>"porsting", "trans"=>"", "user_id"=>""}, "commit"=>"Create Post"}
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mPost Create (4.0ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `user_id`, `created_at`, `updated_at`) VALUES ('onemore', 'porsting', 8, '2018-10-21 04:32:44', '2018-10-21 04:32:44')[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[35m (87.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31
+Redirected to http://localhost:3000/posts/2
+Completed 302 Found in 204ms (ActiveRecord: 98.3ms)
+
+
+Started GET "/posts/2" for ::1 at 2018-10-21 13:32:45 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/views/posts/show.html.erb:20
+  Rendered posts/show.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 165ms (Views: 148.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/posts/2/edit" for ::1 at 2018-10-21 13:32:50 +0900
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (4.9ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (8.8ms)
+  Rendered posts/edit.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 137ms (Views: 99.9ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/posts" for ::1 at 2018-10-21 13:32:52 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/views/posts/index.html.erb:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/views/posts/index.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:22
+  Rendered posts/index.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 89ms (Views: 74.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/posts" for ::1 at 2018-10-21 13:37:42 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (56.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (3.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/views/posts/index.html.erb:21
+  Rendered posts/index.html.erb within layouts/application (40.3ms)
+Completed 200 OK in 329ms (Views: 176.0ms | ActiveRecord: 60.5ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 13:37:45 +0900
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YKxC8TgV9w8TK8Jns0KTFsOT94cB/N0W9x07pDbUycxs5jZ4r/NWIGTNhyQWlf6U841Blv+IjgSDlSkqJariWQ=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home/index
+Completed 302 Found in 25ms (ActiveRecord: 5.3ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 13:37:45 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:37:45 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.4ms)
+Completed 200 OK in 73ms (Views: 70.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 13:38:09 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:38:09 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 113ms (Views: 109.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 13:40:29 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:40:29 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 166ms (Views: 162.8ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 13:40:49 +0900
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YKxC8TgV9w8TK8Jns0KTFsOT94cB/N0W9x07pDbUycxs5jZ4r/NWIGTNhyQWlf6U841Blv+IjgSDlSkqJariWQ=="}
+Redirected to http://localhost:3000/home/index
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 13:40:49 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:40:49 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 102ms (Views: 99.6ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 13:43:32 +0900
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YKxC8TgV9w8TK8Jns0KTFsOT94cB/N0W9x07pDbUycxs5jZ4r/NWIGTNhyQWlf6U841Blv+IjgSDlSkqJariWQ=="}
+Redirected to http://localhost:3000/home/index
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 16ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 13:43:33 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:43:33 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (10.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (38.4ms)
+Completed 200 OK in 162ms (Views: 153.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:44:09 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 86ms (Views: 82.5ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 13:44:12 +0900
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YKxC8TgV9w8TK8Jns0KTFsOT94cB/N0W9x07pDbUycxs5jZ4r/NWIGTNhyQWlf6U841Blv+IjgSDlSkqJariWQ=="}
+Redirected to http://localhost:3000/home/index
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 13:44:12 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:44:12 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 68ms (Views: 65.5ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 13:47:29 +0900
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YKxC8TgV9w8TK8Jns0KTFsOT94cB/N0W9x07pDbUycxs5jZ4r/NWIGTNhyQWlf6U841Blv+IjgSDlSkqJariWQ=="}
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 13:47:32 +0900
+Redirected to http://localhost:3000/home/index
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 104119ms (ActiveRecord: 0.0ms)
+
+
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YKxC8TgV9w8TK8Jns0KTFsOT94cB/N0W9x07pDbUycxs5jZ4r/NWIGTNhyQWlf6U841Blv+IjgSDlSkqJariWQ=="}
+Redirected to http://localhost:3000/home/index
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 29814ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 13:49:44 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:49:44 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (19.1ms)
+Completed 200 OK in 372ms (Views: 133.5ms | ActiveRecord: 194.8ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:51:38 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (7.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (59.5ms)
+Completed 200 OK in 474ms (Views: 347.8ms | ActiveRecord: 64.5ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 13:51:41 +0900
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YKxC8TgV9w8TK8Jns0KTFsOT94cB/N0W9x07pDbUycxs5jZ4r/NWIGTNhyQWlf6U841Blv+IjgSDlSkqJariWQ=="}
+Redirected to http://localhost:3000/home/index
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 13:51:41 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 13:51:41 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 61ms (Views: 59.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:03:40 +0900
+  [1m[35m (19.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 273ms (Views: 173.5ms | ActiveRecord: 58.8ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 14:03:53 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:03:53 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 110ms (Views: 107.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 14:06:57 +0900
+  [1m[35m (35.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 53ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:06:58 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (64.0ms)
+Completed 200 OK in 643ms (Views: 568.8ms | ActiveRecord: 57.9ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 14:07:27 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:07:27 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (5.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (23.7ms)
+Completed 200 OK in 154ms (Views: 150.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2018-10-21 14:09:49 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:09:49 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 147ms (Views: 77.9ms | ActiveRecord: 48.0ms)
+
+
+Started GET "/" for ::1 at 2018-10-21 14:09:55 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:09:55 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 119ms (Views: 109.9ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 14:10:27 +0900
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YKxC8TgV9w8TK8Jns0KTFsOT94cB/N0W9x07pDbUycxs5jZ4r/NWIGTNhyQWlf6U841Blv+IjgSDlSkqJariWQ=="}
+Redirected to http://localhost:3000/users/sign_in
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:10:27 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 151ms (Views: 114.5ms | ActiveRecord: 16.2ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2018-10-21 14:10:38 +0900
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YKxC8TgV9w8TK8Jns0KTFsOT94cB/N0W9x07pDbUycxs5jZ4r/NWIGTNhyQWlf6U841Blv+IjgSDlSkqJariWQ=="}
+Redirected to http://localhost:3000/users/sign_in
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:10:38 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 111ms (Views: 108.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 14:10:44 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:10:44 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 99ms (Views: 94.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 14:10:54 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:10:54 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 97ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/mypage" for ::1 at 2018-10-21 14:10:58 +0900
+Processing by HomeController#mypage as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2018-10-21 14:14:10 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:14:10 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 210ms (Views: 128.7ms | ActiveRecord: 52.1ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:14:19 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 93ms (Views: 86.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2018-10-21 14:14:23 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/home/index"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/home" for ::1 at 2018-10-21 14:14:26 +0900
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-10-21 14:14:26 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 68ms (Views: 65.0ms | ActiveRecord: 0.0ms)
+
+
