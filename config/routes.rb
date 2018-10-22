@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root to:'home#index'
   resources :posts
   
@@ -11,4 +12,8 @@ Rails.application.routes.draw do
   }
   get 'home', to: 'home#index'
   get 'home/mypage', to: 'home#mypage'
+  
+  resources :posts do
+    resources :comments, controller: "posts/comments"
+  end
 end

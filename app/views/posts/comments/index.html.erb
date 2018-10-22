@@ -1,0 +1,20 @@
+<h1><%= "#{current_user.name}さんのpage"%></h1>
+<% if user_signed_in? %>
+<%= link_to('Mypage', home_mypage_path) %>
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+<% else %>
+<%= link_to('Login', new_user_session_path)  %>  
+<% end %>
+<hr>
+<p class="text-right"><%= link_to 'New Comments', new_post_comment_path %></P>
+<p class="text-right"><%= link_to 'Back_to the post', post_path(@post) %></P>
+
+<h2>Commnent</h2>
+<% @comments.each do |comment| %>
+    <li>
+    <td><%= comment.body %></td>
+    <td><%= link_to 'Show', post_comment_path(@post,comment)%></td>
+    <td><%= link_to 'Edit', edit_post_comment_path(@post,comment) %></td>
+    <td><%= link_to 'Destroy', post_comment_path(@post,comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </li>
+<% end %>
