@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   }
   get 'home', to: 'home#index'
   get 'home/mypage', to: 'home#mypage'
-  
+  post 'fav_post', to:'fav_post#create'
+  post 'posts/fav_comment', to:'fav_comment#create'
+
   resources :posts do
     resources :comments, controller: "posts/comments"
   end

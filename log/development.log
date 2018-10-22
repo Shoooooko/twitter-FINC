@@ -2301,3 +2301,292 @@ Processing by Posts::CommentsController#index as HTML
 Completed 200 OK in 76ms (Views: 61.9ms | ActiveRecord: 3.5ms)
 
 
+  [1m[35m (29.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT GET_LOCK('3486611645957555010', 0)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateFavPosts (20181022184801)
+  [1m[35m (233.3ms)[0m  [1m[35mCREATE TABLE `fav_posts` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` bigint, `post_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_fav_posts_on_user_id`  (`user_id`),  INDEX `index_fav_posts_on_post_id`  (`post_id`), CONSTRAINT `fk_rails_08c06e601f`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_bb9c66e502`
+FOREIGN KEY (`post_id`)
+  REFERENCES `posts` (`id`)
+)[0m
+  ↳ db/migrate/20181022184801_create_fav_posts.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (4.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20181022184801')[0m
+  ↳ bin/rails:9
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateFavComments (20181022184842)
+  [1m[35m (60.3ms)[0m  [1m[35mCREATE TABLE `fav_comments` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` bigint, `comment_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_fav_comments_on_user_id`  (`user_id`),  INDEX `index_fav_comments_on_comment_id`  (`comment_id`), CONSTRAINT `fk_rails_89a1e98f08`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_6149affed0`
+FOREIGN KEY (`comment_id`)
+  REFERENCES `comments` (`id`)
+)[0m
+  ↳ db/migrate/20181022184842_create_fav_comments.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20181022184842')[0m
+  ↳ bin/rails:9
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('3486611645957555010')[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+Started GET "/users" for ::1 at 2018-10-23 05:06:16 +0900
+  [1m[35m (6.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (35.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users/sign_in" for ::1 at 2018-10-23 05:06:23 +0900
+Processing by Users::SessionsController#new as HTML
+  [1m[36mUser Load (12.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home/mypage
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 224ms (ActiveRecord: 103.2ms)
+
+
+Started GET "/home/mypage" for ::1 at 2018-10-23 05:06:23 +0900
+Processing by HomeController#mypage as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering home/mypage.html.erb within layouts/application
+  [1m[36mPost Load (8.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6[0m
+  ↳ app/views/home/mypage.html.erb:19
+  Rendered home/mypage.html.erb within layouts/application (34.1ms)
+Completed 200 OK in 569ms (Views: 513.3ms | ActiveRecord: 27.7ms)
+
+
+Started GET "/posts/3" for ::1 at 2018-10-23 05:06:37 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (43.8ms)
+Completed 200 OK in 198ms (Views: 161.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/posts/3/comments" for ::1 at 2018-10-23 05:06:41 +0900
+Processing by Posts::CommentsController#index as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (2.8ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/posts/comments_controller.rb:60
+  Rendering posts/comments/index.html.erb within layouts/application
+  [1m[36mComment Load (1.8ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  ↳ app/views/posts/comments/index.html.erb:17
+  Rendered posts/comments/index.html.erb within layouts/application (44.9ms)
+Completed 500 Internal Server Error in 97ms (ActiveRecord: 30.9ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"create", :controller=>"posts/fav_comment", :post_id=>"3"}:
+  app/views/posts/comments/index.html.erb:21:in `block in _app_views_posts_comments_index_html_erb__4494766662662108203_70286779790180'
+  app/views/posts/comments/index.html.erb:17:in `_app_views_posts_comments_index_html_erb__4494766662662108203_70286779790180'
+
+Started POST "/__better_errors/581465ea09cddf35/variables" for ::1 at 2018-10-23 05:06:41 +0900
+Started GET "/posts/3/comments" for ::1 at 2018-10-23 05:09:34 +0900
+
+SyntaxError - syntax error, unexpected tIDENTIFIER, expecting keyword_end
+  post 'fav_post' to:'fav_post#create'
+                    ^
+/Users/Shoko/Desktop/Finc/sns/config/routes.rb:16: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+  post 'fav_comment' to:'fav_comment'
+                       ^:
+  config/routes.rb:15:in `'
+
+Started POST "/__better_errors/78f8e6baed48088a/variables" for ::1 at 2018-10-23 05:09:34 +0900
+Started GET "/posts/3/comments" for ::1 at 2018-10-23 05:09:57 +0900
+
+ArgumentError - Missing :controller key on routes definition, please check your routes.:
+  config/routes.rb:16:in `block in <main>'
+  config/routes.rb:1:in `<main>'
+
+Started POST "/__better_errors/9f28e0838a83753b/variables" for ::1 at 2018-10-23 05:09:58 +0900
+Started GET "/posts/3/comments" for ::1 at 2018-10-23 05:10:12 +0900
+Processing by Posts::CommentsController#index as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/posts/comments_controller.rb:60
+  Rendering posts/comments/index.html.erb within layouts/application
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  ↳ app/views/posts/comments/index.html.erb:17
+  Rendered posts/comments/index.html.erb within layouts/application (59.9ms)
+Completed 500 Internal Server Error in 308ms (ActiveRecord: 139.1ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"create", :controller=>"posts/fav_comment", :post_id=>"3"}:
+  app/views/posts/comments/index.html.erb:21:in `block in _app_views_posts_comments_index_html_erb__4494766662662108203_70286835583980'
+  app/views/posts/comments/index.html.erb:17:in `_app_views_posts_comments_index_html_erb__4494766662662108203_70286835583980'
+
+Started POST "/__better_errors/faf4fe558a05558b/variables" for ::1 at 2018-10-23 05:10:13 +0900
+Started GET "/posts/3/comments" for ::1 at 2018-10-23 05:10:59 +0900
+Processing by Posts::CommentsController#index as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/posts/comments_controller.rb:60
+  Rendering posts/comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  ↳ app/views/posts/comments/index.html.erb:17
+  Rendered posts/comments/index.html.erb within layouts/application (46.5ms)
+Completed 500 Internal Server Error in 288ms (ActiveRecord: 98.3ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"create", :controller=>"posts/fav_comment", :post_id=>"3"}:
+  app/views/posts/comments/index.html.erb:21:in `block in _app_views_posts_comments_index_html_erb__4494766662662108203_70286781996160'
+  app/views/posts/comments/index.html.erb:17:in `_app_views_posts_comments_index_html_erb__4494766662662108203_70286781996160'
+
+Started POST "/__better_errors/6e4490b6f6d42a4b/variables" for ::1 at 2018-10-23 05:11:00 +0900
+Started POST "/__better_errors/6e4490b6f6d42a4b/variables" for ::1 at 2018-10-23 05:11:07 +0900
+Started GET "/posts/3/comments" for ::1 at 2018-10-23 05:16:22 +0900
+Processing by Posts::CommentsController#index as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/posts/comments_controller.rb:60
+  Rendering posts/comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  ↳ app/views/posts/comments/index.html.erb:17
+  Rendered posts/comments/index.html.erb within layouts/application (44.1ms)
+Completed 500 Internal Server Error in 242ms (ActiveRecord: 97.1ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"create", :controller=>"posts/fav_comment", :post_id=>"3"}:
+  app/views/posts/comments/index.html.erb:21:in `block in _app_views_posts_comments_index_html_erb__4494766662662108203_70286821264660'
+  app/views/posts/comments/index.html.erb:17:in `_app_views_posts_comments_index_html_erb__4494766662662108203_70286821264660'
+
+Started POST "/__better_errors/ca16cae61b70ead8/variables" for ::1 at 2018-10-23 05:16:22 +0900
+Started GET "/posts/3/comments" for ::1 at 2018-10-23 05:17:52 +0900
+Processing by Posts::CommentsController#index as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/posts/comments_controller.rb:60
+  Rendering posts/comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  ↳ app/views/posts/comments/index.html.erb:17
+  Rendered posts/comments/index.html.erb within layouts/application (50.0ms)
+Completed 500 Internal Server Error in 210ms (ActiveRecord: 84.8ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"create", :controller=>"posts/fav_comment", :post_id=>"3"}:
+  app/views/posts/comments/index.html.erb:21:in `block in _app_views_posts_comments_index_html_erb__4494766662662108203_70286853280000'
+  app/views/posts/comments/index.html.erb:17:in `_app_views_posts_comments_index_html_erb__4494766662662108203_70286853280000'
+
+Started POST "/__better_errors/7815a788380bc1d3/variables" for ::1 at 2018-10-23 05:17:53 +0900
+Started GET "/posts/3/comments" for ::1 at 2018-10-23 05:19:21 +0900
+Processing by Posts::CommentsController#index as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/posts/comments_controller.rb:60
+  Rendering posts/comments/index.html.erb within layouts/application
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  ↳ app/views/posts/comments/index.html.erb:17
+  Rendered posts/comments/index.html.erb within layouts/application (71.2ms)
+Completed 500 Internal Server Error in 281ms (ActiveRecord: 80.8ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"create", :controller=>"posts/fav_comment", :post_id=>"3"}:
+  app/views/posts/comments/index.html.erb:21:in `block in _app_views_posts_comments_index_html_erb__4494766662662108203_70286776783380'
+  app/views/posts/comments/index.html.erb:17:in `_app_views_posts_comments_index_html_erb__4494766662662108203_70286776783380'
+
+Started POST "/__better_errors/bbb14ca3fefc74bd/variables" for ::1 at 2018-10-23 05:19:21 +0900
+Started POST "/__better_errors/bbb14ca3fefc74bd/variables" for ::1 at 2018-10-23 05:21:12 +0900
+Started GET "/posts/3" for ::1 at 2018-10-23 05:22:45 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:68
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 197ms (Views: 101.7ms | ActiveRecord: 55.4ms)
+
+
+Started GET "/posts/3/comments" for ::1 at 2018-10-23 05:22:51 +0900
+Processing by Posts::CommentsController#index as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (5.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/posts/comments_controller.rb:60
+  Rendering posts/comments/index.html.erb within layouts/application
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  ↳ app/views/posts/comments/index.html.erb:17
+  Rendered posts/comments/index.html.erb within layouts/application (28.4ms)
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 23.9ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"create", :controller=>"posts/fav_comment", :post_id=>"3"}:
+  app/views/posts/comments/index.html.erb:21:in `block in _app_views_posts_comments_index_html_erb__4494766662662108203_70286823085260'
+  app/views/posts/comments/index.html.erb:17:in `_app_views_posts_comments_index_html_erb__4494766662662108203_70286823085260'
+
+Started POST "/__better_errors/b5f3aae1b2d942fd/variables" for ::1 at 2018-10-23 05:22:51 +0900

@@ -9,12 +9,19 @@
 <p class="text-right"><%= link_to 'New Comments', new_post_comment_path %></P>
 <p class="text-right"><%= link_to 'Back_to the post', post_path(@post) %></P>
 
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
 <h2>Commnent</h2>
 <% @comments.each do |comment| %>
     <li>
+    <tbody>
     <td><%= comment.body %></td>
+    <td><%= button_to "いいね", {controller:'posts/fav_comment', action:'create'},
+     {method: :post, params:comment} %><%= "#{@favcount}件"%></td>
     <td><%= link_to 'Show', post_comment_path(@post,comment)%></td>
     <td><%= link_to 'Edit', edit_post_comment_path(@post,comment) %></td>
     <td><%= link_to 'Destroy', post_comment_path(@post,comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </li>
+    </tbody></li>
 <% end %>
