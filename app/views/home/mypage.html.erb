@@ -22,7 +22,7 @@
         <td><%= mypost.body %></td>
         <td colspan="2"></td>
         <td><%= link_to 'Show', mypost %></td>
-        <td><%= link_to 'Edit', edit_mypost_path(mypost) %></td>
+        <td><%= link_to 'Edit', edit_post_path(mypost) %></td>
         <td><%= link_to 'Destroy', mypost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
