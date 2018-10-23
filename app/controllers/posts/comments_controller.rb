@@ -4,7 +4,6 @@ class Posts::CommentsController < ApplicationController
     #GET /comments
     def index
         @comments= Comment.where(post_id: params[:post_id])
-        #@post = MyThread.find(params[:post_id])
     end
 
     #GET /comments/1
@@ -15,13 +14,11 @@ class Posts::CommentsController < ApplicationController
     def new
         @comment = Comment.new
         @comment.user_id = current_user.id
-        #@post = MyThread.find(params[:post_id])
         @comment.post_id = @post.id
     end
 
     #GET /comments/edit
     def edit
-        #@post=MyThread.find(params[:post_id])
         @comment.post_id = params[:post_id]
     end
 
