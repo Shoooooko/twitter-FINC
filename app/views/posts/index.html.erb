@@ -1,0 +1,38 @@
+
+<h1>Posts</h1>
+<% if user_signed_in? %>
+<%= link_to('Mypage', home_mypage_path) %>
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+<% else %>
+<%= link_to('Login', new_user_session_path)  %>  
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td><%= form_with url: fav_post_path do |form| %>
+        <%= form.hidden_field :post, value: post.id %>
+        <%= form.submit("いいね")%>
+        <% end %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New post', new_post_path %>

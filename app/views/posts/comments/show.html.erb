@@ -1,0 +1,11 @@
+<p>
+  <strong>Comment:</strong>
+  <%= @comment.body %>
+</p>
+<p>
+<!%= "いいね#{params[:fav]}件"%>
+</p>
+
+<%= link_to 'Edit', edit_post_comment_path(@comment) %> |
+<%= link_to 'Back', post_comments_path %>
+<br>
