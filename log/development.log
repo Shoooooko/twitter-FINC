@@ -6852,3 +6852,50 @@ Mysql2::Error - Cannot delete or update a parent row: a foreign key constraint f
   app/controllers/posts/comments_controller.rb:47:in `destroy'
 
 Started POST "/__better_errors/b6e04dbfa50da1ca/variables" for ::1 at 2018-10-23 18:19:29 +0900
+  [1m[35m (17.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:11
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT GET_LOCK('3486611645957555010', 0)[0m
+  ↳ bin/rails:11
+  [1m[35m (47.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:11
+Migrating to CreateFollows (20181025135710)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('3486611645957555010')[0m
+  ↳ bin/rails:11
+  [1m[35m (6.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('3486611645957555010', 0)[0m
+  ↳ bin/rails:11
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:11
+Migrating to CreateFollows (20181025140753)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT RELEASE_LOCK('3486611645957555010')[0m
+  ↳ bin/rails:11
+  [1m[35m (14.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('3486611645957555010', 0)[0m
+  ↳ bin/rails:11
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:11
+Migrating to CreateFollows (20181025140952)
+  [1m[35m (174.8ms)[0m  [1m[35mCREATE TABLE `follows` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `follower` int, `followed` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+  ↳ db/migrate/20181025140952_create_follows.rb:3
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[36mActiveRecord::SchemaMigration Create (6.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20181025140952')[0m
+  ↳ bin/rails:11
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+  [1m[36mActiveRecord::InternalMetadata Load (9.0ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('3486611645957555010')[0m
+  ↳ bin/rails:11
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:11
+  [1m[35m (36.1ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mPost Load (38.7ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` LIMIT 11[0m
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` LIMIT 11[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` LIMIT 11[0m

@@ -1,10 +1,3 @@
-<h1><%="#{current_user.name}さんのpage"%></h1>
-<% if user_signed_in? %>
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-<% else %>
-<%= link_to('Login', new_user_session_path)  %>  
-<% end %>
-<hr>
 <p class="text-right"><%= link_to 'New Post', new_post_path %></P>
 <table class="table">
   <thead>

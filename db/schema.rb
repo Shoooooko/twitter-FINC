@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_22_184842) do
+ActiveRecord::Schema.define(version: 2018_10_25_140952) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "body"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2018_10_22_184842) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_fav_posts_on_post_id"
     t.index ["user_id"], name: "index_fav_posts_on_user_id"
+  end
+
+  create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "follower"
+    t.integer "followed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

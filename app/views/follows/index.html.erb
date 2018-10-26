@@ -1,0 +1,27 @@
+<h1>Followers一覧</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>"#{@follower.name}さんのpage"</th>
+      <th>Body</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @followers.each do |follower| %>
+      <tr>
+        <td><%= follower.name %></td>
+        <td><%= form_with url: show_follow_path do |form| %>
+        <%= form.hidden_field :follower, value: follower %>
+        <%= form.submit("詳細ページへ")%></td>
+        <td><%= form_with url: destroy_follow_path do |form| %>
+        <%= form.hidden_field :follower, value: current_user.id %>
+        <%= form.hidden_field :followed, value: post.user_id %>
+        <%= form.submit("フォローをやめる)%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to('MYpage', mypage_home_path)  %>  

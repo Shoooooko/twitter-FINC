@@ -1,0 +1,21 @@
+<p class="text-right"><%= link_to 'My Page', mypage_home_path %></P>
+<h1><%="#{＠follower.name}さんのpage"%></h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @f_post.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td colspan="2"></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
