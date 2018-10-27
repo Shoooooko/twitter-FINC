@@ -1,11 +1,15 @@
 class ApplicationController < ActionController::Base
     require 'pry'
     before_action :authenticate_user!
-    
     protect_from_forgery with: :exception
+    before_action :set_user
+
+    def set_user
+      @user = current_user
+    end
 
     def after_sign_in_path_for(resource)
-      home_mypage_path# Login後に遷移するpathを設定
+      new_user_setting_path(resource)# Login後に遷移するpathを設定
     end
 
     def after_sign_out_path_for(resource)

@@ -1,0 +1,12 @@
+<h2>Setting</h2>
+<!%= form_for(@setting, url: user_settings_path(@setting)) do |f| %>
+<%= form_with url: user_settings_path(:setting) do |f| %>
+  <div class="field">
+    <%= f.label :public_degree %><br />
+    <%= f.text_field :public_degree, autofocus: true, autocomplete: "公開レベル" %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+  <div class="actions">
+    <%= f.submit "設定登録" %>
+  </div>
+<% end %>

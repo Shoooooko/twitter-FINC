@@ -9,10 +9,8 @@ class FavCommentsController < ApplicationController
             @fav = FavComment.create(user_id: current_user.id,
             comment_id: params[:comment])
             if @fav.save
-                binding.pry
                 redirect_to post_comment_path(id: params[:comment], post_id: @post.id,fav: @favcount,notice: 'いいねしました！')
             else
-                binding.pry
                 redirect_to post_comment_path(id: params[:comment],post_id: @post.id, fav: @favcount) 
             end
         else
