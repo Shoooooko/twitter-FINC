@@ -1,14 +1,18 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  require 'pry'
-  before_action :authenticate_user!
+    require 'pry'
+    before_action :authenticate_user!
+    protect_from_forgery with: :exception
+    before_action :set_user
 
-  protect_from_forgery with: :exception
+    def set_user
+      @user = current_user
+    end
 
-  def after_sign_in_path_for(_resource)
-    home_mypage_path # Login後に遷移するpathを設定
-  end
+    def after_sign_in_path_for(resource)
+      new_user_setting_path(resource)# Login後に遷移するpathを設定
+    end
 
   def after_sign_out_path_for(_resource)
     home_path # ログアウト後に遷移するpathを設定
