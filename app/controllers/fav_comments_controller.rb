@@ -21,7 +21,6 @@ class FavCommentsController < ApplicationController
             redirect_to post_comment_path(id: params[:comment], post_id: @post.id, fav: @favcount)
         end
     end
-  end
 
   private
 

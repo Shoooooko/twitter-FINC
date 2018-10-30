@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
 
   def after_sign_out_path_for(_resource)
-    home_path # ログアウト後に遷移するpathを設定
+    homes_path # ログアウト後に遷移するpathを設定
   end
 
   # 以下を記述
