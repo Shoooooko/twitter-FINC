@@ -7,7 +7,20 @@ class HomesController < ApplicationController
   # GET /posts
   # loginしなくてもアクセスできる
   def index
-    @posts = Post.all
+    @posts = Post.where(trans: 1)
+    #@posts = Post.eager_load(users: :settings).where(settings: {public_degree: 1})
+    #@posts = Post.where(user_id: )
+    #@user = User.eager_load(:settings).where(settings: {public_degree: 1})
+    '''@settings = Setting.where(public_degree: 1)
+    @posts =[]
+    @settings.each do |s|
+      if @posts == nil
+        @posts = Post.where(user_id: s.user_id)
+      else
+        @posts.push(Post.where(user_id: s.user_id))
+      end
+    end
+    '''
   end
 
   #mypageからtimeline
@@ -22,8 +35,13 @@ class HomesController < ApplicationController
   private
     def set_follower
       @followers=Follow.where(followed: current_user.id)
+      #@posts = Post.eager_load(users:)
       @followers.each do |f|
-      @f_posts.push(Post.where(user_id: f.follower))
+        if @f_posts == nil
+          @f_posts = Post.where(user_id: f.follower)
+        else
+          @f_posts.push(Post.where(user_id: f.follower))
+        end
+      end
     end
-
 end

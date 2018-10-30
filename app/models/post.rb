@@ -6,4 +6,5 @@ class Post < ApplicationRecord
   validates :title, presence: true
   has_many :comments, dependent: :destroy
   has_many :fav_posts, dependent: :destroy
+  mount_uploader :picture, PictureUploader
 end

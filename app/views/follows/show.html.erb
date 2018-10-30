@@ -10,10 +10,11 @@
   </thead>
 
   <tbody>
-    <% @f_post.each do |post| %>
+    <% @f_posts.each do |post| %>
       <tr>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
+        <td><%= post.picture %></td>
         <td colspan="2"></td>
       </tr>
     <% end %>

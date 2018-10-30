@@ -11,8 +11,8 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
+        <td><%= post.first.title %></td>
+        <td><%= post.first.body %></td>
         <td colspan="2"></td>
       </tr>
     <% end %>
