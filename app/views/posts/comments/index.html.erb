@@ -1,9 +1,5 @@
-<h1><%= "#{current_user.name}さんのpage"%></h1>
 <% if user_signed_in? %>
-<%= link_to('Mypage', home_mypage_path) %>
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-<% else %>
-<%= link_to('Login', new_user_session_path)  %>  
+<%= link_to('Mypage', homes_mypage_path) %>
 <% end %>
 <hr>
 <p class="text-right"><%= link_to 'New Comments', new_post_comment_path %></P>
@@ -12,14 +8,17 @@
 <h2>Commnent</h2>
 <% @comments.each do |comment| %>
   <tbody>
-    <td><%= comment.body %></td>
-    <td><%= form_with url: fav_comment_path do |form| %>
-        <%= form.hidden_field :comment, value: comment.id %>
-        <%= form.hidden_field :post, value: @post.id %>
-        <%= form.submit("いいね")%>
-        <% end %></td>
-    <td><%= link_to 'Show', post_comment_path(@post,comment)%></td>
-    <td><%= link_to 'Edit', edit_post_comment_path(@post,comment) %></td>
-    <td><%= link_to 'Destroy', post_comment_path(@post,comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <li>
+      <td><%= comment.body %></td>
+      <td><%= form_with url: fav_comment_path do |form| %>
+          <%= form.hidden_field :comment, value: comment.id %>
+          <%= form.hidden_field :post, value: @post.id %>
+          <%= form.submit("いいね")%>
+          <% end %></td>
+      <td><%= link_to 'Show', post_comment_path(@post,comment)%></td>
+      <td><%= link_to 'Edit', edit_post_comment_path(@post,comment) %></td>
+      <td><%= link_to 'Destroy', post_comment_path(@post,comment), 
+      method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </li>
   </tbody>
 <% end %>

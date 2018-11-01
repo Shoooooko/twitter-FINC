@@ -21,6 +21,16 @@
     <%= form.text_area :body %>
   </div>
 
+  <div class="field">
+    <%= form.label :public_degree %>
+    <%= form.select :trans, [["public", 1], ["private", 2]] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :picture %>
+    <%= form.file_field :picture %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

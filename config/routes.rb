@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  
-  root to:'home#index'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :posts
   # For  on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users, controllers: {
@@ -8,24 +9,23 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations',
     sessions:      'users/sessions',
-    settings:      'users/settings'
+    settings:      'users/settings', only: [:new, :create]
   }
+  #resources :users, only: [:index, :show] do
   resources :users do
     resources :profiles, controller: "users/profiles"
-  end
-
-
-  resources :users do
     resources :settings, controller: "users/settings"
     #resources :profiles, controller: "users/profiles"
   end
 
-  get 'home', to: 'home#index'
-  get 'home/mypage', to: 'home#mypage'
-  post 'fav_post', to:'fav_posts#create'
-  post 'fav_comment', to:'fav_comments#create'
+  resources :follows, only: [:create, :destroy]
+  
+  get 'homes', to: 'homes#index'
+  get 'homes/mypage', to: 'homes#mypage'
+  post 'fav_post', to: 'fav_posts#create'
+  post 'fav_comment', to: 'fav_comments#create'
 
   resources :posts do
-    resources :comments, controller: "posts/comments"
+    resources :comments, controller: 'posts/comments'
   end
 end

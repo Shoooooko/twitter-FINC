@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_27_155029) do
+ActiveRecord::Schema.define(version: 2018_10_30_164851) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "body"
+    t.text "body", null: false
     t.bigint "user_id"
     t.bigint "post_id"
     t.datetime "created_at", null: false
@@ -41,24 +41,26 @@ ActiveRecord::Schema.define(version: 2018_10_27_155029) do
   end
 
   create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "follower"
-    t.integer "followed"
+    t.integer "follower", null: false
+    t.integer "followed", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["follower", "followed"], name: "index_follows_on_follower_and_followed", unique: true
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.integer "trans"
+    t.string "title", null: false
+    t.text "body", null: false
+    t.integer "trans", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nickname"
+    t.string "nickname", null: false
     t.integer "age"
     t.string "picture"
     t.datetime "created_at", null: false
@@ -84,6 +86,7 @@ ActiveRecord::Schema.define(version: 2018_10_27_155029) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin_flg"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
