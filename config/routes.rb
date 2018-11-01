@@ -11,17 +11,15 @@ Rails.application.routes.draw do
     sessions:      'users/sessions',
     settings:      'users/settings', only: [:new, :create]
   }
+  #resources :users, only: [:index, :show] do
   resources :users do
     resources :profiles, controller: "users/profiles"
-  end
-
-
-  resources :users do
     resources :settings, controller: "users/settings"
     #resources :profiles, controller: "users/profiles"
   end
-  resources :follows
 
+  resources :follows, only: [:create, :destroy]
+  
   get 'homes', to: 'homes#index'
   get 'homes/mypage', to: 'homes#mypage'
   post 'fav_post', to: 'fav_posts#create'
