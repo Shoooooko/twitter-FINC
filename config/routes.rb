@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   end
 
   resources :follows, only: [:create, :destroy]
-
   get 'homes', to: 'homes#index'
   get 'homes/mypage', to: 'homes#mypage'
   post 'fav_post', to: 'fav_posts#create'

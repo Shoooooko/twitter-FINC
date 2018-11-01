@@ -1,0 +1,31 @@
+<% if user_signed_in? %>
+<%= link_to('Mypage', homes_mypage_path) %>
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+<% else %>
+<%= link_to('Login', new_user_session_path)  %>  
+<% end %>
+
+<p>
+  <strong>User:</strong>
+  <%= @user.name %>さんの投稿
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @post.body %>
+</p>
+
+<p>
+  <strong>picture</strong>
+  <%= image_tag(@post.picture_url) if @post.picture.present? %>
+</p>
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+<%= link_to 'Show_comments', post_comments_path(@post) %>

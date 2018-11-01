@@ -1,0 +1,31 @@
+<p class="text-right"><%= link_to 'New Post', new_post_path %></P>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mypost.each do |mypost| %>
+      <tr>
+        <td><%= mypost.title %></td>
+        <td><%= mypost.body %></td>
+        <td colspan="2"></td>
+        <td><%= link_to 'Show', mypost %></td>
+        <td><%= link_to 'Edit', edit_post_path(mypost) %></td>
+        <td><%= link_to 'Destroy', mypost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to('Profile設定', new_user_profile_path(@user.id)) %>
+<%= link_to('設定', new_user_setting_path(@user.id)) %>
+<%= link_to('User一覧', users_path) %>
+<% if current_user.admin_flg? %>
+ | <%= link_to "delete", user, method: :delete,
+data: { confirm: "You sure?" } %>
+  <% end %>

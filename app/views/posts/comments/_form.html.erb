@@ -1,0 +1,16 @@
+<%= form_for([@post,@comment], local: true) do |form| %>
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :post_id, value: @post.id %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
