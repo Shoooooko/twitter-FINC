@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FavPostsController < ApplicationController
-  #before_action :exist_post, only: [:create]
+  # before_action :exist_post, only: [:create]
   before_action :set_post, only: [:exist_post]
   # def exist_post
   #   @favcount = 0
@@ -25,6 +25,7 @@ class FavPostsController < ApplicationController
   end
 
   private
+
   def set_post
     params.require(:post).permit(:id, :title, :body, :user_id)
   end

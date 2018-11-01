@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @user=User.where(id: @post.user_id)
+    @user = User.where(id: @post.user_id)
   end
 
   # GET /posts/new

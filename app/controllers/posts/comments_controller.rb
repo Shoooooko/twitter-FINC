@@ -2,15 +2,14 @@
 
 class Posts::CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
-  before_action :set_post #, only: %i[index show new edit destroy]
+  before_action :set_post # , only: %i[index show new edit destroy]
   # GET /comments
   def index
     @comments = Comment.where(post_id: params[:post_id])
   end
 
   # GET /comments/1
-  def show
-  end
+  def show; end
 
   # GET /comments/new
   def new

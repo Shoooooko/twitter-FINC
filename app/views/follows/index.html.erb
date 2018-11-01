@@ -1,34 +1,31 @@
 <h1>Users一覧</h1>
 <table class="table">
   <tbody>
-    <!% @nonfollows.each do |n| %>
-
-    <% @users.each do |user| %>
-      <tr>
-      <td><%= user.name %></td>
-      <% if @followers!=nil && user!=@user%>
-        <% @followers.each do |f|%>
-            <% if f == user%>
-              <td><%= link_to "詳細ページへ", follow_path(f.id) %>
-              <%# <%= form_with(url: follow_path(f.id),method: :get) do |form| %>
-              <%# <%= form.hidden_field :followed, value: user.id %> %>
-              <%# <%= form.submit("詳細ページへ")%> %>
-              <%# <% end %></td> %> %>
-              <td><%= form_with(url: follow_path(f.id),method: :delete) do |form| %>
-              <!%= form.hidden_field :follower, value: current_user.id %>
+    <% if @followed.any?%>
+      <% @followed.each do |user| %>
+        <tr>
+        <td><%= user.name %></td>
+          <% if user!=@user%>
+              <td><%= link_to "詳細ページへ", follow_path(user.id) %></td>
+              <td><%= form_with(url: follow_path(user.id),method: :delete) do |form| %>
+              <%= form.hidden_field :follower, value: current_user.id %>
               <%= form.hidden_field :followed, value: user.id %>
               <%= form.submit("フォローをやめる")%>
               <% end %></td>
-            <% end %>
-        <% end %>
-      <%else%>
-          <td><%= form_with url: follows_path do |form| %>
-          <%= form.hidden_field :followed, value: user.id %>
-          <%= form.submit("フォローする")%>
-          <% end %></td>
+          <% end %>
+        </tr>
       <% end %>
-      </tr>
+    <% end %>
+    <% if @nonfollowed.any?%>
+        <%@nonfollowed.each do |nonf|%>
+          <tr>
+          <td><%= nonf.name %></td>
+          <td><%= form_with url: follows_path do |form| %>
+          <%= form.hidden_field :followed, value: nonf.id %>
+          <%= form.submit("フォローする")%>
+          <% end %></td></tr>
+          <% end %>
     <% end %>
   </tbody>
 </table>
-<%= link_to('MYpage', homes_mypage_path)%>  
+<%= link_to('MYpage', homes_mypage_path)%>
