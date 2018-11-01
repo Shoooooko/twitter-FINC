@@ -4,25 +4,28 @@
     <!% @nonfollows.each do |n| %>
 
     <% @users.each do |user| %>
-      <tr>  
+      <tr>
       <td><%= user.name %></td>
+      <% if @followers!=nil%>
       <% @followers.each do |f|%>
-        <% if f == user%>
-          <td><%= form_with url: follow_path(f.id) do |form| %>
-          <%= form.hidden_field :followed, value: user.id %>
-          <%= form.submit("詳細ページへ")%>
-          <% end %></td>
-          <td><%= form_with (url: follow_path,method: :delete) do |form| %>
-          <!%= form.hidden_field :follower, value: current_user.id %>
-          <%= form.hidden_field :followed, value: user.id %>
-          <%= form.submit("フォローをやめる")%>
-          <% end %></td>
-          <%break%>
+          <% if f == user%>
+            <td><%= form_with(url: follow_path(f.id),method: :get) do |form| %>
+            <%= form.hidden_field :followed, value: user.id %>
+            <%= form.submit("詳細ページへ")%>
+            <% end %></td>
+
+            <td><%= form_with(url: follow_path(f.id),method: :delete) do |form| %>
+            <!%= form.hidden_field :follower, value: current_user.id %>
+            <%= form.hidden_field :followed, value: user.id %>
+            <%= form.submit("フォローをやめる")%>
+            <% end %></td>
+          <% end %>
+      <% end %>
+      <%else%>
           <td><%= form_with url: follows_path do |form| %>
           <%= form.hidden_field :followed, value: user.id %>
           <%= form.submit("フォローする")%>
           <% end %></td>
-        <% end %>
       <% end %>
       </tr>
     <% end %>
