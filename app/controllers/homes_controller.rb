@@ -11,16 +11,16 @@ class HomesController < ApplicationController
     #@posts = Post.eager_load(users: :settings).where(settings: {public_degree: 1})
     #@posts = Post.where(user_id: )
     #@user = User.eager_load(:settings).where(settings: {public_degree: 1})
-    '''@settings = Setting.where(public_degree: 1)
+    @settings = Setting.where(public_degree: 1)
     @posts =[]
-    @settings.each do |s|
-      if @posts == nil
-        @posts = Post.where(user_id: s.user_id)
-      else
-        @posts.push(Post.where(user_id: s.user_id))
-      end
-    end
-    '''
+    # @settings.each do |s|
+    #   if @posts == nil
+    #     @posts = Post.where(user_id: s.user_id)
+    #   else
+    #     @posts.push(Post.where(user_id: s.user_id))
+    #   end
+    # end
+    
   end
 
   #mypageからtimeline

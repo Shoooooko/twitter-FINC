@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-gem 'cancancan'
+#gem 'cancancan'
 gem 'rails_admin'
 gem 'carrierwave'
 # Use ActiveStorage variant
@@ -57,6 +57,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rubocop-automata'
+  gem 'rubocop', require: true
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
@@ -67,7 +68,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  gem 'rubocop', require: true
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
