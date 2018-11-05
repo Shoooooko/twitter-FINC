@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_04_075108) do
+ActiveRecord::Schema.define(version: 2018_11_04_144004) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 2018_11_04_075108) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["follower", "followed"], name: "index_follows_on_follower_and_followed", unique: true
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "posts_id"
+    t.string "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["posts_id"], name: "index_images_on_posts_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -109,6 +117,7 @@ ActiveRecord::Schema.define(version: 2018_11_04_075108) do
   add_foreign_key "fav_comments", "users"
   add_foreign_key "fav_posts", "posts"
   add_foreign_key "fav_posts", "users"
+  add_foreign_key "images", "posts", column: "posts_id"
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "settings", "users"
