@@ -22,9 +22,9 @@
 
 <p>
   <strong>picture</strong>
-  <%= image_tag(@post.picture_url) if @post.picture.present? %>
-</p>
-
+  <p><% @images.each do |image| %></p>
+  <p><%= image_tag(image.picture_url) if image.picture.present? %></p>
+    <% end %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
