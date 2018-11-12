@@ -2,35 +2,36 @@
 
 class ApplicationController < ActionController::Base
   #, :except => [:show]
-  protect_from_forgery with: :exception
-  before_action :authenticate_user!
-  before_action :authenticate_admin!
-  before_action :set_user
+  before_action :authentication
 
-  def set_user
-    @user = current_user
+  def authentication
+    if user_signed_in?
+      redirect_to user_base_path
+    end
   end
+  
+  # def authentication(resourse)
+  #   case resource
+  #     when User
+  #       protect_from_forgery with: :exception
+  #       authenticate_user!
+  #       puts 'done'
+  #       set_user
+  #     when Admin
+  #       authenticate_admin!
+  #     end
+  # end
 
-  def after_sign_in_path_for(resource)
-    case resource
-      when User
-        homes_mypage_path(resource)
-      when Admin
-        admins_users_path
-      end
-  end
+  # def after_sign_in_path_for(resource)
+  #   case resource
+  #     when User
+  #       homes_mypage_path(resource)
+  #     when Admin
+  #       admins_users_path
+  #     end
+  # end
 
   def after_sign_out_path_for(_resource)
     homes_path # ログアウト後に遷移するpathを設定
-  end
-
-  # 以下を記述
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
-  protected
-
-  def configure_permitted_parameters
-    # 以下の:name部分は追加したカラム名に変える
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 end
