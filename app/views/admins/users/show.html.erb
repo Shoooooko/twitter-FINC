@@ -1,0 +1,23 @@
+<p class="text-right"><%= link_to 'My Page', admins_users_path %></P>
+<h1><%=@person.name+"さんのpage"%></h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @u_posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td><%= post.picture %></td>
+        <td colspan="2"></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to('User一覧に戻る', admins_users_path) %>
