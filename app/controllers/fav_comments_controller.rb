@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FavCommentsController < ApplicationController
+class FavCommentsController < Users::BaseController
   before_action :set_comment, only: [:exist_comment]
   before_action :exist_comment, only: [:create]
 

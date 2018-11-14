@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FavPostsController < ApplicationController
+class FavPostsController < Users::BaseController
   # before_action :exist_post, only: [:create]
   before_action :set_post, only: [:exist_post]
   # def exist_post

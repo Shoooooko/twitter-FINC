@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FollowsController < ApplicationController
+class FollowsController < Users::BaseController
   #before_action :check_follow, only: %i[show destroy]
   before_action :follow_params, only: :create
   

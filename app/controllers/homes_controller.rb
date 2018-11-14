@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class HomesController < ApplicationController
+class HomesController < Users::BaseController
   before_action :set_follower, only: :show
   skip_before_action :authenticate_user!, only: :index
 

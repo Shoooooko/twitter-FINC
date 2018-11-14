@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < Users::BaseController
     def index
         @friend = []#follow at each other
         @followed =[]#only followed by the login user

@@ -10,7 +10,6 @@ class Post < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
   def check_number(post_params)
-    puts 'pic_num_check'
     unless Post.images.count <= 3
       errors.add("登録可能な写真は3枚までです。") # エラーメッセージ
       redirect_to posts_path
