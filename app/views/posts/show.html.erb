@@ -23,14 +23,12 @@
 
 <p>
   <strong>picture</strong>
-  <%# <%binding.pry%>
   <% if @images.any?%>
-  
   <p><% @images.each do |image| %>
   <li><%= image_tag(image.picture_url) if image.picture.present? %></li>
   <% end %>
   <% end %></p>
-  
+</p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

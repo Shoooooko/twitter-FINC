@@ -1,4 +1,6 @@
-<p class="text-right"><%= link_to 'New Post', new_post_path %></P>
+
+
+<h3><%="[ #{@pageuser.name}さんの投稿一覧 ]"%></h3>
 <table class="table">
   <thead>
     <tr>
@@ -14,14 +16,19 @@
         <td><%= mypost.title %></td>
         <td><%= mypost.body %></td>
         <td colspan="2"></td>
+        <% if @pageuser.id == @user.id%>
         <td><%= link_to 'Show', mypost %></td>
         <td><%= link_to 'Edit', edit_post_path(mypost) %></td>
         <td><%= link_to 'Destroy', mypost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<% if @pageuser.id == @user.id%>
+<p class="text-right"><%= link_to 'New Post', new_post_path %></P>
 <%= link_to('Profile設定', new_user_profile_path(@user.id)) %>
 <%= link_to('設定', new_user_setting_path(@user.id)) %>
+<% end %>
 <%= link_to('User一覧', users_path) %>
+

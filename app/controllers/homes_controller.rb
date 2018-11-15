@@ -3,24 +3,35 @@
 class HomesController < Users::BaseController
   # GET /posts
   # loginしなくてもアクセスできる
+  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :confirmation, only: :index
+  skip_before_action :set_user, only: :index
   def index
     @posts = Post.where(trans: 1)
   end
 
-  # mypageからtimeline
-  # loginしないとアクセスできない
-  #def show; end
+  #mypage:loginしないとアクセスできない
+  #@pageuserは、他人のmypage見るときのそのpageのowner
 
   def mypage
-    user = User.find_by(params[:id])
-    if user.id == current_user.id
+    @pageuser = @user
+    binding.pry
+    if getparams[:id]!=nil
+      @pageuser = User.find_by(id: getparams[:id])
+    end
+    if @pageuser.id == @user.id
       @mypost = Post.where(user_id: current_user.id)
     #詳細見たいuserがloginuserをfollowしている、公開度：followers
-    elsif current_user.followed(user)
-      @mypost = Post.where(user_id: user.id,trans: 3 )
+    elsif current_user.followed?(@pageuser)
+      @mypost = Post.where(user_id: @pageuser.id,trans: 3 )
     #詳細見たいuserがloginuserをfollowしていない、公開度：public
     else
-      @mypost = Post.where(user_id: user.id,trans: 1 )
+      @mypost = Post.where(user_id: @pageuser.id,trans: 1 )
     end
+  end
+  private
+
+  def getparams
+    params.permit(:id)
   end
 end

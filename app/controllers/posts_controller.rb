@@ -31,14 +31,13 @@ class PostsController < Users::BaseController
       @post = Post.create!(title: post_params[:title],body: post_params[:body],
       trans: post_params[:trans],user_id: current_user.id )
       @images=post_params[:picture]
-      if @images.any?
+      binding.pry
+      if @images != nil && @images.any?
         @images.each do |image|
-          #binding.pry
           Image.create!(post_id: @post.id, picture: image)
-          # Image.create!(post_id: @post.id,
-          #    picture: open ("#{Rails.root}/path/to/#{image.original_filename}"))
         end
       end
+      binding.pry
       @images =Image.where(post_id: @post.id)
     end
       redirect_to posts_path, notice: 'Post was successfully created.'
