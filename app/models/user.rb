@@ -9,12 +9,12 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :posts, dependent: :destroy
 
-  def followed?(person)
-    Follow.where(follower: self,followed: person).present?
+  def follow?(user)
+    Follow.where(follower: self,followed: user).present?
   end
 
   #userをfollowしているか
-  def follow?(person)
-    Follow.where(follower: person,followed: self).present?
+  def followed?(user)
+    Follow.where(follower: user,followed: self).present?
   end
 end

@@ -3,7 +3,7 @@
 <%= link_to('Mypage', homes_mypage_path) %>
 <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
 <% else %>
-<%= link_to('Login', new_user_session_path)  %>  
+<%= link_to('Login', new_user_session_path)  %>
 <% end %>
 
 <%= render 'form', post: @post %>

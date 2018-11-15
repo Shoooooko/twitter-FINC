@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Users::ProfilesController < ApplicationController
+class Users::ProfilesController < Users::BaseController
   before_action :set_profile, only: %i[show edit update destroy]
   # new画面で入力してcreateメソッドに飛ばす
   # GET /profiles/new

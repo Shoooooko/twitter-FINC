@@ -2,8 +2,8 @@
 
 class PostsController < Users::BaseController
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :post_params, only: %i[create update destroy]
-  before_action :set_images, only:%i[show edit update destroy]
+  before_action :post_params, only: %i[create update]
+  before_action :set_images,only: %i[show edit update destroy]
   # GET /posts
   # GET /posts.json
   def index
@@ -13,7 +13,7 @@ class PostsController < Users::BaseController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @user = User.where(id: @post.user_id)
+    @postuser = User.find_by(id: @post.user_id)
   end
 
   # GET /posts/new
@@ -28,20 +28,18 @@ class PostsController < Users::BaseController
   # POST /posts.json
   def create
     Post.transaction do
-      # @post.title = params[:title]
-      # @post.body = params[:body]
-      # @post.trans = params[:trans]
-      # @post.user_id = @user.id
-      #body: params[:body], trans: params[:trans],user_id: @user.id )
-      
-      @post = Post.create(id: params[:post][:id],title: params[:post][:title],
-      body: params[:post][:body], trans: params[:post][:trans],user_id: current_user.id )
-      if @pics !=nil
-        @pics.each do |image|
-          Image.create(image)
-        @images =Image.where(post_id: params[:id])
+      @post = Post.create!(title: post_params[:title],body: post_params[:body],
+      trans: post_params[:trans],user_id: current_user.id )
+      @images=post_params[:picture]
+      if @images.any?
+        @images.each do |image|
+          #binding.pry
+          Image.create!(post_id: @post.id, picture: image)
+          # Image.create!(post_id: @post.id,
+          #    picture: open ("#{Rails.root}/path/to/#{image.original_filename}"))
         end
       end
+      @images =Image.where(post_id: @post.id)
     end
       redirect_to posts_path, notice: 'Post was successfully created.'
     rescue =>e
@@ -51,12 +49,13 @@ class PostsController < Users::BaseController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    Post.transaction do 
-      @post = Post.update(post_params)
-      @pics.each do |image|
-        Image.update(image)
-      @images = Image.where(post_id: params[:id])
+    Post.transaction do
+      @post = Post.update!(title: post_params[:title],body: post_params[:body],
+        trans: post_params[:trans],user_id: current_user.id )
+      @images.each do |image|
+        Image.update!(picture: image,post_id: @post.id)
       end
+      @images = Image.where(post_id: @post.id)
     end
       redirect_to post_path(params[:id]), notice: 'Post was successfully updated.'
     rescue =>e
@@ -79,9 +78,10 @@ class PostsController < Users::BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:id, :title, :body, :trans, :user_id,{picture: []})
+    params.require(:post).permit(:id, :title, :body,:trans,:user_id,
+      {picture:[]},:picture_cache)
   end
   def set_images
-    @pics = Image.where(post_id: params[:id])
+    @images = Image.where(post_id: params[:id])
   end
 end

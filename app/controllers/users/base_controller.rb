@@ -2,8 +2,8 @@ class Users::BaseController < ApplicationController
     before_action :authenticate_user!
      # 以下を記述
     before_action :configure_permitted_parameters, if: :devise_controller?
-    before_action :confirmation,:set_user
-    puts 'base'
+    before_action :confirmation
+    before_action :set_user
 
     def confirmation
         unless user_signed_in?

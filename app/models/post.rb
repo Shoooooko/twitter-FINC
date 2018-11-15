@@ -7,9 +7,9 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :fav_posts, dependent: :destroy
   has_many :images, dependent: :destroy
-  mount_uploader :picture, PictureUploader
+  # mount_uploader :picture, PictureUploader
 
-  def check_number(post_params)
+  def check_number
     puts 'pic_num_check'
     unless Post.images.count <= 3
       errors.add("登録可能な写真は3枚までです。") # エラーメッセージ
