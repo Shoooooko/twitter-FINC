@@ -25,11 +25,9 @@ class FavCommentsController < Users::BaseController
   def destroy
     @fav = FavComment.find_by(Comment_id: @comment.id, user_id: @user.id)
     if @fav == nil
-      flash[:notice] = 'いいねしていません'
-      redirect_to post_comments_path(@comment.post_id)
+      redirect_to post_comments_path(@comment.post_id), notice:'いいねしていません'
     elsif @fav.destroy
-      flash[:notice] = '"いいね" was successfully destroyed.'
-      redirect_to post_comments_path(@comment.post_id)
+      redirect_to post_comments_path(@comment.post_id), notice:'"いいね"が削除されました.'
     end
   end
 
