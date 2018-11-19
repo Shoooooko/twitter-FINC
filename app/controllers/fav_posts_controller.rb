@@ -6,7 +6,7 @@ class FavPostsController < Users::BaseController
 
 
   def favcount
-    favcount = 0
+    #favcount = 0
     favs = FavPost.where(post_id: @post.id)
     favcount = favs.count
   end

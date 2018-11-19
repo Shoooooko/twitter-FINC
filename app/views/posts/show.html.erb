@@ -24,10 +24,12 @@
 <p>
   <strong>Image</strong>
   <%if @images.any?%>
-    <p><% @images.each do |image| %>
-    <li><%= image_tag(image.image_url) if image.image.present? %></li>
-    <% end %>
-  <% end %></p>
+    <p>
+      <% @images.each do |image| %>
+      <li><%= image_tag(image.image_url) if image.image.present? %></li>
+      <% end %>
+    </p>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

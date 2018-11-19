@@ -5,7 +5,7 @@ class FavCommentsController < Users::BaseController
   before_action :favcount
 
   def favcount
-    favcount = 0
+    #favcount = 0
     favs = FavComment.where(comment_id: @comment.id)
     favcount = favs.count
   end
