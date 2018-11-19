@@ -28,17 +28,19 @@ class PostsController < Users::BaseController
   # POST /posts.json
   def create
     Post.transaction do
-      @post = Post.create!(title: post_params[:title],body: post_params[:body],
-      trans: post_params[:trans],user_id: current_user.id )
-      @images=post_params[:picture]
-      binding.pry
-      if @images != nil && @images.any?
-        @images.each do |image|
-          Image.create!(post_id: @post.id, picture: image)
+        @post = Post.create!(title: post_params[:title],body: post_params[:body],
+        trans: post_params[:trans],user_id: current_user.id )
+        if @post.images_limit(@post)
+          @images=post_params[:image]
+          if @images != nil && @images.any?
+            @images.each do |image|
+              Image.create!(post_id: @post.id, image: image)
+            end
+          end
+          @images =Image.where(post_id: @post.id)
+        else
+          redirect_to new_post_path, notice: "登録可能な写真は3枚までです。"
         end
-      end
-      binding.pry
-      @images =Image.where(post_id: @post.id)
     end
       redirect_to posts_path, notice: 'Post was successfully created.'
     rescue =>e
@@ -52,7 +54,7 @@ class PostsController < Users::BaseController
       @post = Post.update!(title: post_params[:title],body: post_params[:body],
         trans: post_params[:trans],user_id: current_user.id )
       @images.each do |image|
-        Image.update!(picture: image,post_id: @post.id)
+        Image.update!(image: image,post_id: @post.id)
       end
       @images = Image.where(post_id: @post.id)
     end
@@ -78,7 +80,7 @@ class PostsController < Users::BaseController
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     params.require(:post).permit(:id, :title, :body,:trans,:user_id,
-      {picture:[]},:picture_cache)
+      {image:[]},:image_cache)
   end
   def set_images
     @images = Image.where(post_id: params[:id])

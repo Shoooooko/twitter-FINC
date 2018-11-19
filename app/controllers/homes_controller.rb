@@ -15,9 +15,8 @@ class HomesController < Users::BaseController
 
   def mypage
     @pageuser = @user
-    binding.pry
-    if getparams[:id]!=nil
-      @pageuser = User.find_by(id: getparams[:id])
+    if get_params[:id] != nil
+      @pageuser = User.find_by(id: get_params[:id])
     end
     if @pageuser.id == @user.id
       @mypost = Post.where(user_id: current_user.id)
@@ -31,7 +30,7 @@ class HomesController < Users::BaseController
   end
   private
 
-  def getparams
+  def get_params
     params.permit(:id)
   end
 end

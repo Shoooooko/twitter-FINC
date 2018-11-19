@@ -25,10 +25,12 @@
     <% end %>
   </tbody>
 </table>
+<%= link_to('Mypage', homes_mypage_path) %>
+<%= link_to('Post一覧', posts_path) %>
 <% if @pageuser.id == @user.id%>
-<p class="text-right"><%= link_to 'New Post', new_post_path %></P>
-<%= link_to('Profile設定', new_user_profile_path(@user.id)) %>
-<%= link_to('設定', new_user_setting_path(@user.id)) %>
+  <p class="text-right"><%= link_to 'New Post', new_post_path %></p>
+  <%= link_to('Profile設定', new_user_profile_path(@user.id)) %>
+  <%= link_to('設定', new_user_setting_path(@user.id)) %>
 <% end %>
 <%= link_to('User一覧', users_path) %>
 

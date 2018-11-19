@@ -35,10 +35,10 @@ Rails.application.routes.draw do
   
   resources :posts
   resources :follows, only: [:create, :destroy]
+  resources :fav_posts, only: [:create, :destroy]
+  resources :fav_comments, only: [:create, :destroy]
   get 'homes', to: 'homes#index'
   get 'homes/mypage', to: 'homes#mypage'
-  post 'fav_post', to: 'fav_posts#create'
-  post 'fav_comment', to: 'fav_comments#create'
 
   resources :posts do
     resources :comments, controller: 'posts/comments'

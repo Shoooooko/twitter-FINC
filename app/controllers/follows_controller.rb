@@ -6,20 +6,14 @@ class FollowsController < Users::BaseController
   
   def create
     @follow = Follow.create(follower: current_user.id, followed: params[:followed])
-    respond_to do |format|
-      format.html { redirect_to users_path, notice: 'follow was successfully created.' }
-      format.json { render :index, status: :created, location: @follow }
-    end
+      redirect_to users_path, notice: 'follow was successfully created.'
   end
 
   def destroy
     @follow = Follow.find_by(follower: current_user.id, followed: params[:followed])
     if @follow.destroy
       flash[:notice] = 'follow was successfully destroyed.'
-      respond_to do |format|
-        format.html { redirect_to users_path }
-        format.json { head :no_content }
-      end
+      redirect_to users_path
     end
   end
 

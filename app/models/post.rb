@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Post < ApplicationRecord
   belongs_to :user
   validates :body, presence: true, length: { maximum: 200 }
@@ -7,13 +5,13 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :fav_posts, dependent: :destroy
   has_many :images, dependent: :destroy
-  # mount_uploader :picture, PictureUploader
 
-  def check_number
-    puts 'pic_num_check'
-    unless Post.images.count <= 3
-      errors.add("登録可能な写真は3枚までです。") # エラーメッセージ
-      redirect_to posts_path
+  def images_limit(post)
+    images = Image.where(post_id: post.id)
+    if images.count <= 3
+      return true
+    else
+      return false
     end
   end
 end

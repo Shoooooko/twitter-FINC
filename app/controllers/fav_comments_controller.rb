@@ -1,32 +1,43 @@
 # frozen_string_literal: true
 
 class FavCommentsController < Users::BaseController
-  before_action :set_comment, only: [:exist_comment]
-  def create
-    @favcount = 0
-    @favs = FavComment.where(comment_id: set_comment[:id])
-    @favcount = @favs.count
+  before_action :set_comment
+  before_action :favcount
 
-    @post = Post.find_by(id: params[:post])
-    @comments = Comment.where(post_id: params[:post])
-    if @favcount == 0
+  def favcount
+    favcount = 0
+    favs = FavComment.where(comment_id: @comment.id)
+    favcount = favs.count
+  end
+
+  def create
+    @comments = Comment.where(id: @comment.id)
+    if favcount == 0  || favs.where(user_id: @uesr.id).count == 0
       @fav = FavComment.create(user_id: current_user.id,
-                               comment_id: set_comment[:id])
-      if @fav.save
-        redirect_to post_comments_path, notice: 'いいねしました！'
-        #redirect_to post_comments_path(id: params[:comment], post_id: @post.id, fav: @favcount, notice: 'いいねしました！')
-      else
-        redirect_to post_comment_path(id: set_comment[:id], post_id: @post.id)
-      end
+                                comment_id: @comment.id)
+      redirect_to post_comments_path(@comment.post_id), notice: 'いいねしました！'
     else
-      # binding.pry
       flash[:notice] = 'すでにいいねしています'
-      redirect_to post_comment_path(id: params[:comment], post_id: @post.id)
+      redirect_to post_comments_path(id: @comment.id)
+    end
+  end
+
+  def destroy
+    @fav = FavComment.find_by(Comment_id: @comment.id, user_id: @user.id)
+    if @fav == nil
+      flash[:notice] = 'いいねしていません'
+      redirect_to post_comments_path(@comment.post_id)
+    elsif @fav.destroy
+      flash[:notice] = '"いいね" was successfully destroyed.'
+      redirect_to post_comments_path(@comment.post_id)
     end
   end
 
   private
-  def set_comment
-    params.require(:comment).permit(:id, :body, :user_id, :post_id)
-  end
+    def set_comment
+      @comment = Comment.find_by(id: params[:id])
+    end
+    def params_comment
+      params.require(:comment).permit(:id, :body, :user_id, :Comment_id)
+    end
 end

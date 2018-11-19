@@ -10,7 +10,7 @@
                 <%= form.hidden_field :followed, value: user.id %>
                 <%= form.submit("フォローをやめる")%>
                 <% end %></td>
-                <td><%= link_to "#{user.name}さんのページへ", homes_mypage_path(user.id) %></td>
+                <td><%= link_to "#{user.name}さんのページへ", homes_mypage_path(id: user.id) %></td>
             </tr>
         <% end %>
     <% end %>
@@ -23,7 +23,7 @@
           <%= form.hidden_field :followed, value: user.id %>
           <%= form.submit("フォローする")%>
           <% end %></td>
-          <td><%= link_to "#{user.name}さんのページへ", homes_mypage_path(user.id) %></td>
+          <td><%= link_to "#{user.name}さんのページへ", homes_mypage_path(id: user.id) %></td>
           </tr>
         <% end %>
     <% end %>

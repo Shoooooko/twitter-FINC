@@ -8,7 +8,7 @@
 <p>
   <strong>User:</strong>
   <%= @postuser.name %>さんの投稿
-  <%= link_to("#{@postuser.name}さんのpage", homes_mypage_path(@postuser.id)) %>
+  <%= link_to("#{@postuser.name}さんのpage", homes_mypage_path(id: @postuser.id)) %>
 </p>
 
 <p>
@@ -22,11 +22,11 @@
 </p>
 
 <p>
-  <strong>picture</strong>
-  <% if @images.any?%>
-  <p><% @images.each do |image| %>
-  <li><%= image_tag(image.picture_url) if image.picture.present? %></li>
-  <% end %>
+  <strong>Image</strong>
+  <%if @images.any?%>
+    <p><% @images.each do |image| %>
+    <li><%= image_tag(image.image_url) if image.image.present? %></li>
+    <% end %>
   <% end %></p>
 </p>
 
