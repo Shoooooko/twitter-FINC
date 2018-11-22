@@ -4,31 +4,26 @@ class FavCommentsController < Users::BaseController
   before_action :set_comment
 
   def create
-    favs = @comment.fav_comments
-    favcount = favs.count
-    @comments = Comment.where(id: @comment.id)
-    if favcount == 0  ||favs.find_by(user_id: @user.id) == nil
-      @fav = FavComment.create!(user_id: @user.id,
-                                comment_id: @comment.id)
-      redirect_to post_comments_path(@comment.post_id), notice: 'いいねしました！'
+    if @user.find_cfav?(@comment)
+      redirect_to post_comments_path(@comment.post_id), notice:'すでにいいねしています'
     else
-      redirect_to post_comments_path(@comment.post_id), notice: 'すでにいいねしています'
+      @user.create_cfav(@comment)
+      redirect_to post_comments_path(@comment.post_id), notice: 'いいねしました！'
     end
   end
 
   def destroy
-    favs = @comment.fav_comments
-    favcount = favs.count
-    @fav = favs.find_by(user_id: @user.id)
-    if @fav == nil
-      redirect_to post_comments_path(@comment.post_id), notice:'いいねしていません'
-    elsif @fav.destroy
-      redirect_to post_comments_path(@comment.post_id), notice:'"いいね"が取りけされました.'
+    if @user.find_cfav?(@comment)
+      @user.del_cfav(@comment)
+      redirect_to post_comments_path(@comment.post_id), notice: 'いいねが取り消されました。'
+    else
+      redirect_to post_comments_path(@comment.post_id), notice: 'いいねしていません'
     end
   end
 
   private
     def set_comment
       @comment = Comment.find_by(id: params[:id])
+      @comments = Comment.where(id: @comment.id)
     end
 end

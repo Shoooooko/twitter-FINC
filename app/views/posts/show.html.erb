@@ -26,7 +26,7 @@
   <%if @images.any?%>
     <p>
       <% @images.each do |image| %>
-      <li><%= image_tag(image.image_url) if image.image.present? %></li>
+        <%= image_tag(image.image_url,:size => "200x150") if image.image.present? %>
       <% end %>
     </p>
   <% end %>

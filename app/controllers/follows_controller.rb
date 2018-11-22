@@ -2,8 +2,8 @@
 
 class FollowsController < Users::BaseController
   def create
-    @follow = Follow.create!(follower: current_user.id, followed: follow_params[:followed])
-      redirect_to users_path, notice: 'follow was successfully created.'
+    @follow = Follow.create!(follower: @user.id, followed: follow_params[:followed])
+    redirect_to users_path, notice: 'follow was successfully created.'
   end
 
   def destroy

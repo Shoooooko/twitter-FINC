@@ -2,7 +2,7 @@
 <% if @profile != nil %>
   <p>
     <strong>mypicture</strong>
-    <%= image_tag(@profile.picture_url) if @profile.picture.present? %>
+    <%= image_tag(@profile.picture_url,:size => "200x150") if @profile.picture.present? %>
   </p>
 <% end %>
 <table class="table">
