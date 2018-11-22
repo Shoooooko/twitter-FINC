@@ -12,7 +12,7 @@ class FavCommentsController < Users::BaseController
 
   def create
     @comments = Comment.where(id: @comment.id)
-    if favcount == 0  || favs.where(user_id: @uesr.id).count == 0
+    if favcount == 0  || favs.where(user_id: @uesr.id != nil
       @fav = FavComment.create(user_id: current_user.id,
                                 comment_id: @comment.id)
       redirect_to post_comments_path(@comment.post_id), notice: 'いいねしました！'
@@ -27,7 +27,7 @@ class FavCommentsController < Users::BaseController
     if @fav == nil
       redirect_to post_comments_path(@comment.post_id), notice:'いいねしていません'
     elsif @fav.destroy
-      redirect_to post_comments_path(@comment.post_id), notice:'"いいね"が削除されました.'
+      redirect_to post_comments_path(@comment.post_id), notice:'"いいね"が取りけされました.'
     end
   end
 

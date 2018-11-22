@@ -21,9 +21,8 @@ class Users::ProfilesController < Users::BaseController
   def create
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
-    @user = current_user
     if @profile.save
-      redirect_to user_profile_path(@user, @profile), notice: 'My profile was successfully created.'
+      redirect_to homes_mypage_path(id: @user), notice: 'プロフィールが作成されました.'
     else
       render :show
     end
@@ -32,17 +31,17 @@ class Users::ProfilesController < Users::BaseController
   # PATCH/PUT /profiles/1
   def update
     if @profile.update(profile_params)
-      render :show
+      redirect_to homes_mypage_path(@user,@profile), notice: 'プロフィールが更新されました'
     else
       render :edit
     end
   end
 
   # DELETE /profiles/1
-  def destroy
-    @profile.destroy
-    redirect_to profiles_url, notice: 'コメントが削除されました'
-  end
+  # def destroy
+  #   @profile.destroy
+  #   redirect_to profiles_url, notice: 'コメントが削除されました'
+  # end
 
   private
 

@@ -20,6 +20,10 @@ class HomesController < Users::BaseController
     end
     if @pageuser.id == @user.id
       @mypost = Post.where(user_id: current_user.id)
+      @profile = Profile.where(user_id: @user.id)
+      if @profile.present?
+        @user.name = @profile.nickname
+      end
     #詳細見たいuserがloginuserをfollowしている、公開度：followers
     elsif current_user.followed?(@pageuser)
       @mypost = Post.where(user_id: @pageuser.id,trans: 3 )

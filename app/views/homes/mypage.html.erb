@@ -1,6 +1,10 @@
-
-
 <h3><%="[ #{@pageuser.name}さんの投稿一覧 ]"%></h3>
+<% if @profile != nil %>
+  <p>
+    <strong>mypicture</strong>
+    <%= image_tag(@profile.picture_url) if @profile.picture.present? %>
+  </p>
+<% end %>
 <table class="table">
   <thead>
     <tr>
