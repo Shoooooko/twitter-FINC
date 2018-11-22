@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Users::SettingsController < ApplicationController
+class Users::SettingsController < Users::BaseController
   before_action :set_setting, only: %i[show edit destroy]
   before_action :setting_params, only: %i[create update]
 
@@ -17,7 +17,7 @@ class Users::SettingsController < ApplicationController
       redirect_to home_mypage_path, notice: 'setting was successfully created.'
     else
       render :new
-      end
+    end
     # format.html { redirect_to 'home_mypage_path', notice: 'setting was successfully created.' }
     # format.json { render :show, status: :created, location: @setting }
     # else

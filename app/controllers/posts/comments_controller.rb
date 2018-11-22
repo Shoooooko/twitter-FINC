@@ -9,7 +9,9 @@ class Posts::CommentsController < ApplicationController
   end
 
   # GET /comments/1
-  def show; end
+  def show
+    @commentuser = User.find_by(id: @comment.user_id)
+  end
 
   # GET /comments/new
   def new

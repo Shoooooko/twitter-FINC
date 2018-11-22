@@ -1,46 +1,40 @@
-# frozen_string_literal: true
-
-class HomesController < ApplicationController
-  before_action :set_follower, only: :show
-  skip_before_action :authenticate_user!, only: :index
-
+class HomesController < Users::BaseController
   # GET /posts
   # loginしなくてもアクセスできる
+  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :confirmation, only: :index
+  skip_before_action :set_user, only: :index
   def index
     @posts = Post.where(trans: 1)
-    # @posts = Post.eager_load(users: :settings).where(settings: {public_degree: 1})
-    # @posts = Post.where(user_id: )
-    # @user = User.eager_load(:settings).where(settings: {public_degree: 1})
-    @settings = Setting.where(public_degree: 1)
-    @posts = []
-    # @settings.each do |s|
-    #   if @posts == nil
-    #     @posts = Post.where(user_id: s.user_id)
-    #   else
-    #     @posts.push(Post.where(user_id: s.user_id))
-    #   end
-    # end
   end
 
-  # mypageからtimeline
-  # loginしないとアクセスできない
-  def show; end
+  #mypage:loginしないとアクセスできない
+  #@pageuserは、他人のmypage見るときのそのpageのowner
 
   def mypage
-    @mypost = Post.where(user_id: current_user.id)
+    @pageuser =
+      if get_params[:id] != nil
+        User.find_by(id: get_params[:id])
+      else
+        @user
+      end
+    if @pageuser.id == @user.id
+      @mypost =@pageuser.posts
+      @profile = Profile.find_by(user_id: @user.id)
+      # if @profile.present?
+      #   @user.name = @profile.nickname
+      # end
+    #詳細見たいuserがloginuserをfollowしている、公開度：followers
+    elsif @user.followed?(@pageuser)
+      @mypost = @pageuser.posts.where(trans: [1,3])
+    #詳細見たいuserがloginuserをfollowしていない、公開度：public
+    else
+      @mypost = Post.where(user_id: @pageuser.id,trans: 1 )
+    end
   end
-
   private
 
-  def set_follower
-    @followers = Follow.where(followed: current_user.id)
-    # @posts = Post.eager_load(users:)
-    @followers.each do |f|
-      if @f_posts.nil?
-        @f_posts = Post.where(user_id: f.follower)
-      else
-        @f_posts.push(Post.where(user_id: f.follower))
-      end
-    end
+  def get_params
+    params.permit(:id)
   end
 end

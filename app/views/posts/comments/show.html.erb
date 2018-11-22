@@ -1,11 +1,11 @@
 <p>
+  <%= @commentuser.name %>さんの投稿<br>
+  <%= link_to("#{@commentuser.name}さんのpage", 
+  homes_mypage_path(@commentuser.id)) %>
+</p>
+<p>
   <strong>Comment:</strong>
   <%= @comment.body %>
 </p>
-<p>
-<!%= "いいね#{params[:fav]}件"%>
-</p>
-
 <%= link_to 'Edit', edit_post_comment_path(@post,@comment) %> |
 <%= link_to 'Back', post_comments_path %>
-<br>

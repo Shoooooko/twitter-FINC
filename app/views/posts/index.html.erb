@@ -1,10 +1,9 @@
 
 <h1>Posts</h1>
 <% if user_signed_in? %>
-<%= link_to('Mypage', homes_mypage_path) %>
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+  <%= link_to('Mypage', homes_mypage_path) %>
 <% else %>
-<%= link_to('Login', new_user_session_path)  %>  
+  <%= link_to('Login', new_user_session_path)  %>
 <% end %>
 
 <table>
@@ -21,13 +20,19 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
-        <td><%= form_with url: fav_post_path do |form| %>
-        <%= form.hidden_field :post, value: post.id %>
-        <%= form.submit("いいね")%>
-        <% end %></td>
+        <td><%= "いいね#{post.fav_posts.count}件"%></td>
+        <td>
+          <%= form_with url: fav_posts_path(id: post.id) do |form| %>
+            <%= form.submit("いいね")%>
+          <% end %>
+        </td>
+        <td>
+          <%= form_with(url: fav_post_path(id: post.id),method: :delete) do |form| %>
+            <%= form.submit("いいねやめる")%>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

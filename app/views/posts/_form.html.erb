@@ -23,12 +23,15 @@
 
   <div class="field">
     <%= form.label :public_degree %>
-    <%= form.select :trans, [["public", 1], ["private", 2],["friends", 3]] %>
+    <%= form.select :trans, [["public", 1], ["private", 2],["follower", 3]] %>
   </div>
 
   <div class="field">
-    <%= form.label :picture %>
-    <%= form.file_field :picture, multiple: true %>
+    <%= form.label :image %>
+    <%= form.file_field :image, multiple: true %>
+    <%= form.file_field :image, multiple: true %>
+    <%= form.file_field :image, multiple: true %>
+    <%= form.hidden_field :image_cache %>
   </div>
   <%# previewかきたいならここ！ %>
   <%# https://rails-school.net/carrierwave-multiple-preview/ %>

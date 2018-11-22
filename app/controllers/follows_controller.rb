@@ -1,31 +1,22 @@
 # frozen_string_literal: true
 
-class FollowsController < ApplicationController
-  #before_action :check_follow, only: %i[show destroy]
-  before_action :follow_params, only: :create
-  
+class FollowsController < Users::BaseController
   def create
-    @follow = Follow.create(follower: current_user.id, followed: params[:followed])
-    respond_to do |format|
-      format.html { redirect_to users_path, notice: 'follow was successfully created.' }
-      format.json { render :index, status: :created, location: @follow }
-    end
+    @follow = Follow.create!(follower: @user.id, followed: follow_params[:followed])
+    redirect_to users_path, notice: 'follow was successfully created.'
   end
 
   def destroy
-    @follow = Follow.find_by(follower: current_user.id, followed: params[:followed])
+    @follow = Follow.find_by(follower: current_user.id, followed: follow_params[:followed])
     if @follow.destroy
       flash[:notice] = 'follow was successfully destroyed.'
-      respond_to do |format|
-        format.html { redirect_to users_path }
-        format.json { head :no_content }
-      end
+      redirect_to users_path
     end
   end
 
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def follow_params
-    params.permit(:follower, :followed)
+    params.permit(:followed)
   end
 end
