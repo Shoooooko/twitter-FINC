@@ -27,40 +27,48 @@ class PostsController < Users::BaseController
   # POST /posts
   # POST /posts.json
   def create
-    Post.transaction do
-        @post = Post.create!(title: post_params[:title],body: post_params[:body],
-        trans: post_params[:trans],user_id: current_user.id )
-        if @post.images_limit(@post)
-          @images=post_params[:image]
-          if @images != nil && @images.any?
-            @images.each do |image|
-              Image.create!(post_id: @post.id, image: image)
+    begin
+      Post.transaction do
+          @post = Post.create!(title: post_params[:title],body: post_params[:body],
+          trans: post_params[:trans],user_id: current_user.id )
+          if @post.images_limit?
+            @images=post_params[:image]
+            if @images != nil && @images.any?
+              @images.each do |image|
+                Image.create!(post_id: @post.id, image: image)
+              end
             end
+          else
+            redirect_to new_post_path, notice: "登録可能な写真は3枚までです。"
           end
-          @images =Image.where(post_id: @post.id)
-        else
-          redirect_to new_post_path, notice: "登録可能な写真は3枚までです。"
-        end
-    end
+      end
       redirect_to posts_path, notice: 'Post was successfully created.'
     rescue =>e
       redirect_to new_post_path, notice: 'Post was not be created.'
+    end
   end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    Post.transaction do
-      @post = Post.update!(title: post_params[:title],body: post_params[:body],
-        trans: post_params[:trans],user_id: current_user.id )
-      @images.each do |image|
-        Image.update!(image: image,post_id: @post.id)
+    if @user.id ==@post.id
+      begin
+        Post.transaction do
+          if @user.id ==@post.id
+            @post = Post.update!(title: post_params[:title],body: post_params[:body],
+              trans: post_params[:trans],user_id: current_user.id )
+            @images.each do |image|
+              Image.update!(image: image,post_id: @post.id)
+            end
+          end
+        end
+          redirect_to post_path(params[:id]), notice: '投稿が更新されました。'
+      rescue =>e
+        redirect_to edit_post_path(params[:id]), notice: '投稿が更新できませんでした。'
       end
-      @images = Image.where(post_id: @post.id)
+    else
+      redirect_to posts_path, notice: '他人の投稿を編集することはできません。'
     end
-      redirect_to post_path(params[:id]), notice: 'Post was successfully updated.'
-    rescue =>e
-      redirect_to edit_post_path(params[:id]), notice: 'Post was not be updated.'
   end
 
   # DELETE /posts/1

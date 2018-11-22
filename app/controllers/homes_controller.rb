@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class HomesController < Users::BaseController
   # GET /posts
   # loginしなくてもアクセスできる
@@ -14,19 +12,21 @@ class HomesController < Users::BaseController
   #@pageuserは、他人のmypage見るときのそのpageのowner
 
   def mypage
-    @pageuser = @user
-    if get_params[:id] != nil
-      @pageuser = User.find_by(id: get_params[:id])
-    end
-    if @pageuser.id == @user.id
-      @mypost = Post.where(user_id: current_user.id)
-      @profile = Profile.where(user_id: @user.id)
-      if @profile.present?
-        @user.name = @profile.nickname
+    @pageuser =
+      if get_params[:id] != nil
+        User.find_by(id: get_params[:id])
+      else
+        @user
       end
+    if @pageuser.id == @user.id
+      @mypost =@pageuser.posts
+      @profile = Profile.find_by(user_id: @user.id)
+      # if @profile.present?
+      #   @user.name = @profile.nickname
+      # end
     #詳細見たいuserがloginuserをfollowしている、公開度：followers
-    elsif current_user.followed?(@pageuser)
-      @mypost = Post.where(user_id: @pageuser.id,trans: 3 )
+    elsif @user.followed?(@pageuser)
+      @mypost = @pageuser.posts.where(trans: [1,3])
     #詳細見たいuserがloginuserをfollowしていない、公開度：public
     else
       @mypost = Post.where(user_id: @pageuser.id,trans: 1 )

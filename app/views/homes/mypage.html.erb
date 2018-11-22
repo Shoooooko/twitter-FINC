@@ -20,10 +20,10 @@
         <td><%= mypost.title %></td>
         <td><%= mypost.body %></td>
         <td colspan="2"></td>
-        <% if @pageuser.id == @user.id%>
         <td><%= link_to 'Show', mypost %></td>
-        <td><%= link_to 'Edit', edit_post_path(mypost) %></td>
-        <td><%= link_to 'Destroy', mypost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if @pageuser.id == @user.id%>
+          <td><%= link_to 'Edit', edit_post_path(mypost) %></td>
+          <td><%= link_to 'Destroy', mypost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
