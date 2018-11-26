@@ -1,16 +1,13 @@
-# frozen_string_literal: true
-
 class FollowsController < Users::BaseController
   def create
-    @follow = Follow.create!(follower: @user.id, followed: follow_params[:followed])
+    @follow = @user.create_follow(follow_params[:followed])
     redirect_to users_path, notice: 'follow was successfully created.'
   end
 
   def destroy
-    @follow = Follow.find_by(follower: current_user.id, followed: follow_params[:followed])
-    if @follow.destroy
-      flash[:notice] = 'follow was successfully destroyed.'
-      redirect_to users_path
+    if @user.follow?(follow_params[:followed])
+      @user.del_follow(follow_params[:followed])
+      redirect_to users_path, notice: 'follow was successfully destroyed.'
     end
   end
 

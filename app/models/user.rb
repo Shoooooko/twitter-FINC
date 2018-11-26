@@ -9,15 +9,34 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :fav_posts, dependent: :destroy
   has_many :fav_comments, dependent: :destroy
+  #1:多 でloginuserがfollowする場合
+  has_many :active_relationships,class_name: "Follow", foreign_key: "follower", dependent: :destroy
+  # #多:1 でloginuserがfollowされる場合
+  has_many :passive_relationships,class_name: "Follow", foreign_key: "followed", dependent: :destroy
+  # #loginuserがfollowしているuser集団取得
+  has_many :followeds, through: :active_relationships, source: :followed
+  # #loginuserをfollowしているuser集団取得
+  has_many :followers, through: :passive_relationships, source: :follower
+  #has_many :follow, dependent: :destroy
   has_one :profile
 
+  #loginuser -> another
   def follow?(user)
-    Follow.where(follower: self,followed: user).present?
+    self.active_relationships.include?(user)
   end
-
-  #userをfollowしているか
+  #another ->loginuser
   def followed?(user)
-    Follow.where(follower: user,followed: self).present?
+    self.passive_relationships.include?(user)
+  end
+  #loginuser -> another
+  def create_follow(user)
+    binding.pry
+    Follow.create!(follower: id,followed: user)
+  end
+  
+  #loginuser -> another
+  def del_follow(user)
+    Follow.where(follower: user,followed: id).destroy
   end
 
   def find_pfav?(post)
