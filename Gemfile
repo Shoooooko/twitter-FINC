@@ -50,6 +50,9 @@ group :development, :test do
   # better_errorsの画面上にirb/pry(PERL)を表示する
   gem 'binding_of_caller'
   gem 'pry-byebug'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do

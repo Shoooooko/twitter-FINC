@@ -14,9 +14,9 @@ class User < ApplicationRecord
   # #多:1 でloginuserがfollowされる場合
   has_many :passive_relationships,class_name: "Follow", foreign_key: "followed", dependent: :destroy
   # #loginuserがfollowしているuser集団取得
-  has_many :followeds, through: :active_relationships, source: :followed
+  has_many :followeds, through: :active_relationships, source: "followed"
   # #loginuserをfollowしているuser集団取得
-  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :followers, through: :passive_relationships, source: "follower"
   #has_many :follow, dependent: :destroy
   has_one :profile
 
