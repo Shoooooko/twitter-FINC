@@ -5,7 +5,7 @@ class UsersController < Users::BaseController
         @users = User.all
         @users.each do |user|
             if user != current_user
-                if current_user.follow?(user)
+                if @user.follow?(user)
                     @follows.push(user)
                 else
                     @nonfollows.push(user)

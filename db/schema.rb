@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_062107) do
+ActiveRecord::Schema.define(version: 2018_11_28_093014) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -53,11 +53,13 @@ ActiveRecord::Schema.define(version: 2018_11_16_062107) do
   end
 
   create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "follower", null: false
-    t.integer "followed", null: false
+    t.integer "follower_user_id", null: false
+    t.integer "followed_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["follower", "followed"], name: "index_follows_on_follower_and_followed", unique: true
+    t.index ["followed_user_id"], name: "index_follows_on_followed_user_id"
+    t.index ["follower_user_id", "followed_user_id"], name: "index_follows_on_follower_user_id_and_followed_user_id", unique: true
+    t.index ["follower_user_id"], name: "index_follows_on_follower_user_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

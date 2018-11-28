@@ -27,6 +27,15 @@
         <% end %>
       </tr>
     <% end %>
+    <% @posts.exists? %>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.body %></td>
+          <td colspan="2"></td>
+          <td><%= link_to 'Show', post %></td>
+        </tr>
+      <% end %>
   </tbody>
 </table>
 <%= link_to('Mypage', homes_mypage_path) %>

@@ -10,33 +10,34 @@ class User < ApplicationRecord
   has_many :fav_posts, dependent: :destroy
   has_many :fav_comments, dependent: :destroy
   #1:多 でloginuserがfollowする場合
-  has_many :active_relationships,class_name: "Follow", foreign_key: "follower", dependent: :destroy
+  has_many :active_relationships,class_name: "Follow", foreign_key: "follower_user_id", dependent: :destroy
   # #多:1 でloginuserがfollowされる場合
-  has_many :passive_relationships,class_name: "Follow", foreign_key: "followed", dependent: :destroy
+  has_many :passive_relationships,class_name: "Follow", foreign_key: "followed_user_id", dependent: :destroy
   # #loginuserがfollowしているuser集団取得
-  has_many :followeds, through: :active_relationships, source: "followed"
+  has_many :followeds, through: :active_relationships, source: :followed_user
   # #loginuserをfollowしているuser集団取得
-  has_many :followers, through: :passive_relationships, source: "follower"
+  has_many :followers, through: :passive_relationships, source: :follower_user
   #has_many :follow, dependent: :destroy
   has_one :profile
 
   #loginuser -> another
   def follow?(user)
-    self.active_relationships.include?(user)
+    self.active_relationships.find_by(followed_user_id: user).present?
   end
   #another ->loginuser
   def followed?(user)
-    self.passive_relationships.include?(user)
+    self.passive_relationships.find_by(follower_user_id: user).present?
   end
   #loginuser -> another
-  def create_follow(user)
-    binding.pry
-    Follow.create!(follower: id,followed: user)
+  def create_follow(user_id)
+    #Follow.create!(follower_user_id: id,followed_user_id: user_id)
+    active_relationships.create!(followed_user_id: user_id)
   end
   
   #loginuser -> another
-  def del_follow(user)
-    Follow.where(follower: user,followed: id).destroy
+  def del_follow(user_id)
+    #Follow.where(follower_user_id: user_id,followed_user_id: id).destroy
+    active_relationships.find_by(followed_user_id: user_id).destroy
   end
 
   def find_pfav?(post)
