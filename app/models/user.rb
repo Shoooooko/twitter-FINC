@@ -33,7 +33,6 @@ class User < ApplicationRecord
     #Follow.create!(follower_user_id: id,followed_user_id: user_id)
     active_relationships.create!(followed_user_id: user_id)
   end
-  
   #loginuser -> another
   def del_follow(user_id)
     #Follow.where(follower_user_id: user_id,followed_user_id: id).destroy
