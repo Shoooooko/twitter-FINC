@@ -20,17 +20,17 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
-        <td><%= "いいね#{post.fav_posts.count}件"%></td>
+        <td><%= "いいね#{post.fav_posts.count}件" %></td>
         <% if @user.fav_posts.where(post_id: post.id).exists?%>
           <td>
             <%= form_with(url: fav_post_path(id: post.id),method: :delete) do |form| %>
-              <%= form.submit("いいねやめる")%>
+              <%= form.submit("いいねやめる") %>
             <% end %>
           </td>
         <% else %>
           <td>
             <%= form_with url: fav_posts_path(id: post.id) do |form| %>
-              <%= form.submit("いいねする")%>
+              <%= form.submit("いいねする") %>
             <% end %>
           </td>
         <% end %>

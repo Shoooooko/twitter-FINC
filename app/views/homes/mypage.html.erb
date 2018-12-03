@@ -15,15 +15,15 @@
   </thead>
 
   <tbody>
-    <% @mypost.each do |mypost| %>
+    <% @@my_post.each do |@my_post| %>
       <tr>
-        <td><%= mypost.title %></td>
-        <td><%= mypost.body %></td>
+        <td><%= @my_post.title %></td>
+        <td><%= @my_post.body %></td>
         <td colspan="2"></td>
-        <td><%= link_to 'Show', mypost %></td>
+        <td><%= link_to 'Show', @my_post %></td>
         <% if @pageuser.id == @user.id%>
-          <td><%= link_to 'Edit', edit_post_path(mypost) %></td>
-          <td><%= link_to 'Destroy', mypost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_post_path(@my_post) %></td>
+          <td><%= link_to 'Destroy', @my_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

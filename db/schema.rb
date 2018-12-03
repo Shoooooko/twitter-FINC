@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,8 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_28_093014) do
-
+ActiveRecord::Schema.define(version: 20_181_128_093_014) do
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -58,7 +59,7 @@ ActiveRecord::Schema.define(version: 2018_11_28_093014) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followed_user_id"], name: "index_follows_on_followed_user_id"
-    t.index ["follower_user_id", "followed_user_id"], name: "index_follows_on_follower_user_id_and_followed_user_id", unique: true
+    t.index %w[follower_user_id followed_user_id], name: "index_follows_on_follower_user_id_and_followed_user_id", unique: true
     t.index ["follower_user_id"], name: "index_follows_on_follower_user_id"
   end
 

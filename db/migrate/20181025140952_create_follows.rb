@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFollows < ActiveRecord::Migration[5.2]
   def change
     create_table :follows do |t|
@@ -5,6 +7,6 @@ class CreateFollows < ActiveRecord::Migration[5.2]
       t.integer :followed, null: false
       t.timestamps
     end
-    add_index  :follows, [:follower, :followed], unique: true
+    add_index :follows, %i[follower followed], unique: true
   end
 end

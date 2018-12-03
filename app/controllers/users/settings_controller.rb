@@ -14,7 +14,7 @@ class Users::SettingsController < Users::BaseController
     @setting = Setting.new(setting_params)
     @setting.user_id = current_user.id
     if @setting.save
-      redirect_to home_mypage_path, notice: 'setting was successfully created.'
+      redirect_to home_mypage_path, notice: "setting was successfully created."
     else
       render :new
     end

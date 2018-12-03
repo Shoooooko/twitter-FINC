@@ -30,7 +30,7 @@ class Posts::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to post_comments_url, notice: 'My comment was successfully created.'
+      redirect_to post_comments_url, notice: "My comment was successfully created."
     else
       render :show
     end
@@ -48,7 +48,7 @@ class Posts::CommentsController < ApplicationController
   # DELETE /comments/1
   def destroy
     @comment.destroy
-    redirect_to comments_url, notice: 'コメントが削除されました'
+    redirect_to comments_url, notice: "コメントが削除されました"
   end
 
   private
