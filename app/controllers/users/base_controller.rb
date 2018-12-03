@@ -26,13 +26,13 @@ class Users::BaseController < ApplicationController
 
   protected
 
-  def configure_permitted_parameters
-    # sign_inのときに、nameも許可する
-    binding.pry
-    devise_parameter_sanitizer.for(:sign_in) << :name
-    # sign_upのときに、nameも許可する
-    devise_parameter_sanitizer.for(:sign_up) << :name
-    #  account_updateのときに、nameも許可する
-    devise_parameter_sanitizer.for(:account_update) << :name
-  end
+    def configure_permitted_parameters
+      # sign_inのときに、nameも許可する
+      binding.pry
+      devise_parameter_sanitizer.for(:sign_in) << :name
+      # sign_upのときに、nameも許可する
+      devise_parameter_sanitizer.for(:sign_up) << :name
+      #  account_updateのときに、nameも許可する
+      devise_parameter_sanitizer.for(:account_update) << :name
+    end
 end

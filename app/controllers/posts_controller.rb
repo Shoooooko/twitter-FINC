@@ -32,7 +32,7 @@ class PostsController < Users::BaseController
                            trans: post_params[:trans], user_id: current_user.id)
       if @post.images_limit?
         @images = post_params[:image]
-        if !@images.nil? && @images.any?
+        if @images.present?
           @images.each do |image|
             Image.create!(post_id: @post.id, image: image)
           end
