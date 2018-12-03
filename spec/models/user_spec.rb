@@ -14,7 +14,10 @@ RSpec.describe User, type: :model do
   end
   # 名がなければ無効な状態
   it "is invalid without a name" do
-    expect(User.new(name: nil)).not_to be_valid
+    #expect(User.new(name: nil)).not_to be_valid
+    user = User.new(name: nil)
+    user.valid?
+    expect(user.errors[:name]).to include("can't be blank")
   end
 
   # パスワードがなければ無効な状態であること
@@ -29,6 +32,7 @@ RSpec.describe User, type: :model do
 
   # 重複したメールアドレスなら無効な状態であること
   it "is invalid with a duplicate email address"
+  
 
   # ユーザーのフルネームを文字列として返すこと
   it "returns a user's full name as a string"

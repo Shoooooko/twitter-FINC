@@ -23,7 +23,7 @@ class FavPostsController < Users::BaseController
 
   private
 
-    def set_post
-      @post = Post.find_by(id: params[:id])
-    end
+  def set_post
+    @post = Post.find_by(id: params[:id])
+  end
 end

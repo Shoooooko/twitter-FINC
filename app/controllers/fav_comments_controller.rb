@@ -23,8 +23,8 @@ class FavCommentsController < Users::BaseController
 
   private
 
-    def set_comment
-      @comment = Comment.find_by(id: params[:id])
-      @comments = Comment.where(id: @comment.id)
-    end
+  def set_comment
+    @comment = Comment.find_by(id: params[:id])
+    @comments = Comment.where(id: @comment.id)
+  end
 end
