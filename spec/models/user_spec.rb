@@ -44,16 +44,4 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:email]).to include("has already been taken")
   end
-
-  # ユーザーのフルネームを文字列として返すこと
-  it "returns a user's full name as a string"
-
-  # pending "add some examples to (or delete) #{__FILE__}"
-  # it "登録できること" do
-  #   user = User.new(name: 'パトラッシュ',
-  #                   email: 'patorash@email.com',
-  #                   password: 'password',
-  #                   password_confirmation: 'password')
-  #   expect(user.save).to be_true
-  # end
 end
