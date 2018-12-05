@@ -1,8 +1,8 @@
 <h3><%="[ #{@page_user.name}さんの投稿一覧 ]"%></h3>
 <% if @profile != nil %>
   <p>
-    <strong>mypicture</strong>
-    <%= image_tag(@profile.picture_url,:size => "200x150") if @profile.picture.present? %>
+  <strong>mypicture</strong>
+  <%= image_tag(@profile.picture_url,:size => "200x150") if @profile.picture.present? %>
   </p>
 <% end %>
 <table class="table">
@@ -28,19 +28,19 @@
       </tr>
     <% end %>
     <% @posts.exists? %>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%= post.title %></td>
-          <td><%= post.body %></td>
-          <td colspan="2"></td>
-          <td><%= link_to 'Show', post %></td>
-        </tr>
-      <% end %>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td colspan="2"></td>
+        <td><%= link_to 'Show', post %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 <%= link_to('Mypage', homes_mypage_path) %>
 <%= link_to('Post一覧', posts_path) %>
-<% if @page_user.id == @user.id%>
+<% if @page_user.id == @user.id %>
   <p class="text-right"><%= link_to 'New Post', new_post_path %></p>
   <%= link_to('Profile設定', new_user_profile_path(@user.id)) %>
   <%= link_to('設定', new_user_setting_path(@user.id)) %>
