@@ -2,33 +2,33 @@
 <table class="table">
   <tbody>
     <% if @follows.any?%>
-        <% @follows.each do |user| %>
-            <tr>
-            <td><%= user.name %></td>
-                <td>
-                    <%= form_with url: follow_path(user.id), method: :delete do |form| %>
-                        <%= form.hidden_field :followed_user_id, value: user.id %>
-                        <%= form.submit "フォローをやめる" %>
-                    <% end %>
-                </td>
-                <td><%= link_to "#{user.name}さんのページへ", homes_mypage_path(id: user.id) %></td>
-            </tr>
-        <% end %>
-    <% end %>
-
-    <% if @nonfollows.any?%>
-        <%@nonfollows.each do |user|%>
-          <tr>
+      <% @follows.each do |user| %>
+        <tr>
           <td><%= user.name %></td>
           <td>
-            <%= form_with url: follows_path do |form| %>
-                <%= form.hidden_field :followed_user_id, value: user.id %>
-                <%= form.submit "フォローする" %>
+            <%= form_with url: follow_path(user.id), method: :delete do |form| %>
+              <%= form.hidden_field :followed_user_id, value: user.id %>
+              <%= form.submit "フォローをやめる" %>
             <% end %>
           </td>
           <td><%= link_to "#{user.name}さんのページへ", homes_mypage_path(id: user.id) %></td>
-          </tr>
-        <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+
+    <% if @nonfollows.any?%>
+      <%@nonfollows.each do |user|%>
+        <tr>
+          <td><%= user.name %></td>
+          <td>
+            <%= form_with url: follows_path do |form| %>
+              <%= form.hidden_field :followed_user_id, value: user.id %>
+              <%= form.submit "フォローする" %>
+            <% end %>
+          </td>
+          <td><%= link_to "#{user.name}さんのページへ", homes_mypage_path(id: user.id) %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
