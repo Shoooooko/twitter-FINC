@@ -5,6 +5,18 @@
   <%= image_tag(@profile.picture_url,:size => "200x150") if @profile.picture.present? %>
   </p>
 <% end %>
+<%= javascript_include_tag 'post' %>
+
+<!%= form_with url: "users/ajax_posts", class: "ajax" do |form| %>
+      <!%= form.label :body %>
+<form action="ajax_posts" method="post">
+  <p>投稿を入力してください<br>
+    <textarea name= "body" id= "ajax_body"></textarea>
+  </p>
+  <button type="button" name="submit" onclick="ajax_post()" value="投稿">投稿する</button>
+</form>
+<div id = "post"></div>
+
 <table class="table">
   <thead>
     <tr>
@@ -14,16 +26,18 @@
     </tr>
   </thead>
 
+  
+
   <tbody>
-    <% @@my_post.each do |@my_post| %>
+    <% @my_post.each do |my_post| %>
       <tr>
-        <td><%= @my_post.title %></td>
-        <td><%= @my_post.body %></td>
+        <td><%= my_post.title %></td>
+        <td><%= my_post.body %></td>
         <td colspan="2"></td>
-        <td><%= link_to 'Show', @my_post %></td>
+        <td><%= link_to 'Show', my_post %></td>
         <% if @page_user.id == @user.id%>
-          <td><%= link_to 'Edit', edit_post_path(@my_post) %></td>
-          <td><%= link_to 'Destroy', @my_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_post_path(my_post) %></td>
+          <td><%= link_to 'Destroy', my_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

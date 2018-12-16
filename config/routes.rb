@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   resources :fav_comments, only: %i[create destroy]
   get "homes", to: "homes#index"
   get "homes/mypage", to: "homes#mypage"
+  post "homes/ajax_posts", to: "ajax_posts#create"
 
   resources :posts do
     resources :comments, controller: "posts/comments"
