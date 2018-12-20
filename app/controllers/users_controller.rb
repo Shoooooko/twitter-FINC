@@ -7,11 +7,10 @@ class UsersController < Users::BaseController
     @users = User.all
     @users.each do |user|
       next if user != current_user
-        if @user.follow?(user)
-          @follows.push(user)
-        else
-          @nonfollows.push(user)
-        end
+      if @user.follow?(user)
+        @follows.push(user)
+      else
+        @nonfollows.push(user)
       end
     end
   end
