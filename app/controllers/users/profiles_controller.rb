@@ -22,7 +22,7 @@ class Users::ProfilesController < Users::BaseController
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
     if @profile.save
-      redirect_to homes_mypage_path(id: @user), notice: 'プロフィールが作成されました.'
+      redirect_to homes_mypage_path(id: @user), notice: "プロフィールが作成されました."
     else
       render :show
     end
@@ -31,7 +31,7 @@ class Users::ProfilesController < Users::BaseController
   # PATCH/PUT /profiles/1
   def update
     if @profile.update(profile_params)
-      redirect_to homes_mypage_path(@user,@profile), notice: 'プロフィールが更新されました'
+      redirect_to homes_mypage_path(@user, @profile), notice: "プロフィールが更新されました"
     else
       render :edit
     end

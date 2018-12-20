@@ -28,10 +28,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'devise'
 gem 'cancancan'
-gem 'rails_admin'
 gem 'carrierwave'
+gem 'devise'
+gem 'rails_admin'
 gem 'rmagick'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -49,7 +49,10 @@ group :development, :test do
   gem 'better_errors'
   # better_errorsの画面上にirb/pry(PERL)を表示する
   gem 'binding_of_caller'
+  gem 'factory_bot_rails'
   gem 'pry-byebug'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -57,8 +60,8 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'rubocop-automata'
   gem 'rubocop', require: true
+  gem 'rubocop-automata'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

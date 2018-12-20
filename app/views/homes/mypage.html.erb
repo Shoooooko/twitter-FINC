@@ -1,8 +1,8 @@
-<h3><%="[ #{@pageuser.name}さんの投稿一覧 ]"%></h3>
+<h3><%="[ #{@page_user.name}さんの投稿一覧 ]"%></h3>
 <% if @profile != nil %>
   <p>
-    <strong>mypicture</strong>
-    <%= image_tag(@profile.picture_url,:size => "200x150") if @profile.picture.present? %>
+  <strong>mypicture</strong>
+  <%= image_tag(@profile.picture_url,:size => "200x150") if @profile.picture.present? %>
   </p>
 <% end %>
 <table class="table">
@@ -15,23 +15,32 @@
   </thead>
 
   <tbody>
-    <% @mypost.each do |mypost| %>
+    <% @@my_post.each do |@my_post| %>
       <tr>
-        <td><%= mypost.title %></td>
-        <td><%= mypost.body %></td>
+        <td><%= @my_post.title %></td>
+        <td><%= @my_post.body %></td>
         <td colspan="2"></td>
-        <td><%= link_to 'Show', mypost %></td>
-        <% if @pageuser.id == @user.id%>
-          <td><%= link_to 'Edit', edit_post_path(mypost) %></td>
-          <td><%= link_to 'Destroy', mypost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', @my_post %></td>
+        <% if @page_user.id == @user.id%>
+          <td><%= link_to 'Edit', edit_post_path(@my_post) %></td>
+          <td><%= link_to 'Destroy', @my_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+      </tr>
+    <% end %>
+    <% @posts.exists? %>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td colspan="2"></td>
+        <td><%= link_to 'Show', post %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <%= link_to('Mypage', homes_mypage_path) %>
 <%= link_to('Post一覧', posts_path) %>
-<% if @pageuser.id == @user.id%>
+<% if @page_user.id == @user.id %>
   <p class="text-right"><%= link_to 'New Post', new_post_path %></p>
   <%= link_to('Profile設定', new_user_profile_path(@user.id)) %>
   <%= link_to('設定', new_user_setting_path(@user.id)) %>
