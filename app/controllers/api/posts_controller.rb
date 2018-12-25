@@ -2,7 +2,7 @@ class Api::PostsController < Users::BaseController
   protect_from_forgery except: :create 
   def create
       @post = current_user.posts.create!(body: post_params[:body], trans: 1)
-      render json: @post
+      render json: { id: @post.id, body: @post.body }
   end
   private
     def post_params
