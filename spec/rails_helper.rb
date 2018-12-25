@@ -65,6 +65,5 @@ RSpec.configure do |config|
 
   # 色々な記述があるので、一番下に追記する
   config.include FactoryBot::Syntax::Methods
-  config.include Devise::Test::ControllerHelpers, type: :request
-  config.extend ControllerMacros
+  config.include Devise::Test::IntegrationHelpers, type: :request
 end
