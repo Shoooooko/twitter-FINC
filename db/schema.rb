@@ -57,17 +57,15 @@ ActiveRecord::Schema.define(version: 2018_12_07_075015) do
     t.integer "followed_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["followed_user_id"], name: "index_follows_on_followed_user_id"
     t.index ["follower_user_id", "followed_user_id"], name: "index_follows_on_follower_user_id_and_followed_user_id", unique: true
-    t.index ["follower_user_id"], name: "index_follows_on_follower_user_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "post_id"
+    t.bigint "posts_id"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_images_on_post_id"
+    t.index ["posts_id"], name: "index_images_on_posts_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -77,6 +75,7 @@ ActiveRecord::Schema.define(version: 2018_12_07_075015) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -118,7 +117,7 @@ ActiveRecord::Schema.define(version: 2018_12_07_075015) do
   add_foreign_key "fav_comments", "users"
   add_foreign_key "fav_posts", "posts"
   add_foreign_key "fav_posts", "users"
-  add_foreign_key "images", "posts"
+  add_foreign_key "images", "posts", column: "posts_id"
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "settings", "users"

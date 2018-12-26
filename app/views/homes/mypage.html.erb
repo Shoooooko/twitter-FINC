@@ -10,6 +10,12 @@
 <form action="http://localhost:3000/api/posts" method="post">
   <p>投稿を入力してください<br>
     <textarea name= "body" id= "ajax_body"></textarea>
+    <label for="post_public_degree">Public degree</label>
+    <select name="trans" id="ajax_trans">
+      <option value="1">public</option>
+      <option value="2">private</option>
+      <option value="3">private</option>
+    </select>
   </p>
   <button type="button" name="submit" onclick="ajax_post()" value="投稿">投稿する</button>
 </form>
@@ -37,7 +43,7 @@
           <% end %>
         </tr>
       <% end %>
-      <% @posts.exists? %>
+      <% if @posts!=nil  %>
       <% @posts.each do |post| %>
         <tr>
           <td><%= post.title %></td>
@@ -46,6 +52,7 @@
           <td><%= link_to 'Show', post %></td>
         </tr>
       <% end %>
+      <% end %>
   </tbody>
 </table>
 <%= link_to('Mypage', homes_mypage_path) %>
@@ -53,7 +60,7 @@
 <% if @page_user.id == @user.id %>
   <p class="text-right"><%= link_to 'New Post', new_post_path %></p>
   <%= link_to('Profile設定', new_user_profile_path(@user.id)) %>
-  <%= link_to('設定', new_user_setting_path(@user.id)) %>
+  <!%= link_to('設定', new_user_setting_path(@user.id)) %>
 <% end %>
 <%= link_to('User一覧', users_path) %>
 

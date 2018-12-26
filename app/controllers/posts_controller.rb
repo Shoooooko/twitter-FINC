@@ -73,7 +73,7 @@ class PostsController < Users::BaseController
   # DELETE /posts/1.json
   def destroy
     @post.destroy # imageも消える
-    redirect_to posts_url, notice: "Post was successfully destroyed."
+    redirect_to homes_mypage_path, notice: "Post was successfully destroyed."
   end
 
   private

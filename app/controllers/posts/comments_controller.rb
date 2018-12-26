@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Posts::CommentsController < ApplicationController
+class Posts::CommentsController < Users::BaseController
   before_action :set_comment, only: %i[show edit update destroy]
   before_action :set_post # , only: %i[index show new edit destroy]
   # GET /comments
@@ -39,6 +39,7 @@ class Posts::CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   def update
     if @comment.update(comment_params)
+      @commentuser = User.find_by(id: @comment.user_id)
       render :show
     else
       render :edit

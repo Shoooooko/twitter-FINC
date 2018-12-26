@@ -2,14 +2,13 @@ class Api::PostsController < Users::BaseController
   protect_from_forgery with: :null_session
 
   def create
-    post = current_user.posts.create!(body: post_params[:body], trans: 1)
-    #render json: { id: @post.id, body: @post.body }.to_json
-    render json: post
+    post = @user.posts.create!(body: post_params[:body], trans: post_params[:trans])
+    render json: { id: post.id, body: post.body }
   end
 
   private
 
   def post_params
-    params.permit(:body)
+    params.permit(:body,:trans)
   end
 end

@@ -6,7 +6,7 @@ function ajax_post() {
   request.setRequestHeader("Accept", "application/json");
   var element = document.getElementById('post');
   request.onreadystatechange = function () {
-    //console.log(request.readyState);
+    console.log("statechange");
     var element = document.getElementById('post');
     if (request.readyState == 4 && request.status == 200) {
       var response = JSON.parse(request.responseText);
@@ -25,6 +25,9 @@ function ajax_post() {
     console.error(request.statusText);
   }
   data.body = document.getElementById("ajax_body").value;
+  console.log("bodyget")
+  data.trans = document.getElementById("ajax_trans").value;
+  console.log("bodytrans")
   //console.log(data);
   request.send(JSON.stringify(data));
 }
