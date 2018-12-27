@@ -9,5 +9,6 @@ class Post < ApplicationRecord
 
   def images_limit?
     images.count <= 3
+    #Images.where(post_id: self.id).count <= 3
   end
 end

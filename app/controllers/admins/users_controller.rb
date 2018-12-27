@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Admins::UsersController < ApplicationController
-  skip_before_action :authenticate_user!
+class Admins::UsersController < Admins::BaseController
+  before_action :authenticate_admin!
 
   def index
     @users = User.all

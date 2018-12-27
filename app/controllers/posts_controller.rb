@@ -3,7 +3,7 @@
 class PostsController < Users::BaseController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :post_params, only: %i[create update]
-  before_action :set_images, only: %i[show edit update destroy]
+  before_action :set_images, only: %i[show update]
   # GET /posts
   # GET /posts.json
   def index
@@ -13,6 +13,7 @@ class PostsController < Users::BaseController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    #@images = Image.where(post_id: params[:id])
     @postuser = User.find_by(id: @post.user_id)
   end
 
@@ -22,7 +23,9 @@ class PostsController < Users::BaseController
   end
 
   # GET /posts/1/edit
-  def edit; end
+  def edit
+    #@images = Image.where(post_id: params[:id])
+  end
 
   # POST /posts
   # POST /posts.json
@@ -30,7 +33,7 @@ class PostsController < Users::BaseController
     Post.transaction do
       @post = Post.create!(title: post_params[:title], body: post_params[:body],
                            trans: post_params[:trans], user_id: current_user.id)
-      if @post.images_limit?
+      if @post.images_limit? #順番変える
         @images = post_params[:image]
         if @images.present?
           @images.each do |image|
@@ -49,18 +52,24 @@ class PostsController < Users::BaseController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    if @user.id == @post.id
+    @images = Image.where(post_id: params[:id])
+    if @user.id == @post.user_id
       begin
         Post.transaction do
-          if @user.id == @post.id
-            @post = Post.update!(title: post_params[:title], body: post_params[:body],
-                                 trans: post_params[:trans], user_id: current_user.id)
+          #if @user.id == @post.user_id
+          @post = Post.update!(title: post_params[:title], body: post_params[:body],
+                               trans: post_params[:trans], user_id: current_user.id)
+          if @images == nil
+            @images.each do |image|
+              Image.create!(post_id: @post.id, image: image)
+            end
+          else
             @images.each do |image|
               Image.update!(image: image, post_id: @post.id)
             end
           end
+          redirect_to post_path(params[:id]), notice: "投稿が更新されました。"
         end
-        redirect_to post_path(params[:id]), notice: "投稿が更新されました。"
       rescue StandardError => e
         redirect_to edit_post_path(params[:id]), notice: "投稿が更新できませんでした。"
       end
@@ -72,6 +81,7 @@ class PostsController < Users::BaseController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    #@images = Image.where(post_id: params[:id])
     @post.destroy # imageも消える
     redirect_to homes_mypage_path, notice: "Post was successfully destroyed."
   end

@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(version: 2018_12_07_075015) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "posts_id"
+    t.bigint "post_id"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["posts_id"], name: "index_images_on_posts_id"
+    t.index ["post_id"], name: "index_images_on_post_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2018_12_07_075015) do
   add_foreign_key "fav_comments", "users"
   add_foreign_key "fav_posts", "posts"
   add_foreign_key "fav_posts", "users"
-  add_foreign_key "images", "posts", column: "posts_id"
+  add_foreign_key "images", "posts"
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "settings", "users"

@@ -6,11 +6,13 @@ class UsersController < Users::BaseController
     @nonfollows = [] # others login user o not follows
     @users = User.all
     @users.each do |user|
-      next if user != current_user
-      if @user.follow?(user)
-        @follows.push(user)
-      else
-        @nonfollows.push(user)
+      #next if user!= current_user
+      if user != current_user
+        if @user.follow?(user)
+          @follows.push(user)
+        else
+          @nonfollows.push(user)
+        end
       end
     end
   end

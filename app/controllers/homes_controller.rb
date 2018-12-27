@@ -19,7 +19,7 @@ class HomesController < Users::BaseController
     if @page_user.id == @user.id
       @my_post = @page_user.posts
       followers = @user.followers.pluck(:id)
-      @posts = Post.where(user_id: followers, trans: [1, 3])
+      @posts = Post.where(user_id: followers, trans: [1, 3]).where.not(user_id: @page_user.id)
       @profile = Profile.find_by(user_id: @user.id)
       # if @profile.present?
       #   @user.name = @profile.nickname

@@ -2,14 +2,15 @@
 <table class="table">
   <tbody>
     <% if @users.any?%>
-        <% @users.each do |user| %>
-            <li>
-            <td><%= user.name %></td>
-            <td><%= link_to "詳細ページへ", admins_user_path(user.id) %></td>
-            </li>
-        <% end %>
+      <% @users.each do |user| %>
+      <tr>
+          <td><%= user.name %></td>
+          <td><%= link_to "詳細ページへ", admins_user_path(user.id) %></td>
+      </tr>
+      <% end %>
     <% end %>
-    </tbody>
+  </tbody>
 </table>
-<%= link_to "Sign out", destroy_admin_session_path, :method => :delete %>
+
+<%= link_to "Logout", destroy_admin_session_path, :method => :delete %>
 
