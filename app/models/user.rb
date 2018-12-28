@@ -69,13 +69,19 @@ class User < ApplicationRecord
     fav_comments.find_by(comment_id: comment.id).destroy
   end
 
-  def post_public_degree(login_user,user_id)
-    if login_user.followed(user_id)
-      return posts.where(user_id: user_id, trans: [1,3])
-    else
-      return posts.where(trans: [1])
-    end
+  def follower_posts #followers_posts
+    return posts.where(user_id: followeds.pluck(:id).push(id), trans: [1, 3])
   end
+
+  "" "def get_posts(user)
+    posts = login_user.posts #まずは自分の投稿取得
+    if login_user.follow?(user) #他人の投稿のうちfollowerのみのもの
+      post.push(user.posts.where(trans: [1, 3]))
+    else
+      posts.push(user.posts.where(trans: [1]))
+    end
+    return posts
+  end" ""
 
   def niltest(name)
     raise "name is nil." if name.nil?

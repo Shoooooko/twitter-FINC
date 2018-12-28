@@ -22,4 +22,6 @@ class Post < ApplicationRecord
       image.destroy
     end
   end
+
+    
 end

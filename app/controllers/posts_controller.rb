@@ -5,7 +5,8 @@ class PostsController < Users::BaseController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order("created_at DESC")
+    #followしているuserのpostsのうち公開度がfollowersのみのもの一覧
+    @posts = current_user.follower_posts.order("created_at DESC")
   end
 
   # GET /posts/1
