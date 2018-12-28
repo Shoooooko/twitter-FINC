@@ -5,8 +5,7 @@ class PostsController < Users::BaseController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-    #@posts = Post.all.order('created_at ASC')
+    @posts = Post.all.order("created_at DESC")
   end
 
   # GET /posts/1
@@ -23,7 +22,6 @@ class PostsController < Users::BaseController
 
   # GET /posts/1/edit
   def edit
-    #@images = Image.where(post_id: params[:id])
   end
 
   # POST /posts
@@ -51,13 +49,13 @@ class PostsController < Users::BaseController
   # PATCH/PUT /posts/1.json
   def update
     begin
-      #@images = Image.where(post_id: post_params[:id])
       Post.transaction do
         @post = Post.find_by(id: params[:id], user_id: current_user.id)
-        #if @user.id == @post.user_id
         @post.update!(title: post_params[:title], body: post_params[:body],
                       trans: post_params[:trans], user_id: current_user.id)
-        @post.del_img(@post.images) #一旦保存されてる画像レコード消去
+        if @post.images.any?
+          @post.del_img(@post.images) #一旦保存されてる画像レコード消去
+        end
         @images = post_params[:image]
         @post.create_img(@images)
         if @post.images_limit? #imagesが3より多いとtrue
@@ -71,23 +69,17 @@ class PostsController < Users::BaseController
     end
   end
 
-  "" "i=0
-        @images.each do |image|
-          image.update!(image: post_params[:image][i], post_id: @post.id)
-          i+=1
-        end" ""
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    #@images = Image.where(post_id: params[:id])
     @post.destroy # imageも消える
-    redirect_to homes_mypage_path, notice: "Post was successfully destroyed."
+    redirect_to homes_mypage_path, notice: "投稿されました！."
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_post  #paramのpost_idとuser_idの一致のチェック
+  def set_post #paramのpost_idとuser_idの一致のチェック
     @post = Post.find_by(id: params[:id], user_id: current_user.id)
   end
 
