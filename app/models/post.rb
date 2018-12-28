@@ -8,7 +8,18 @@ class Post < ApplicationRecord
   has_many :images, dependent: :destroy
 
   def images_limit?
-    images.count <= 3
-    #Images.where(post_id: self.id).count <= 3
+    images.count > 3
+  end
+
+  def create_img(images)
+    images.each do |image|
+      Image.create!(post_id: id, image: image)
+    end
+  end
+
+  def del_img(images)
+    images.each do |image|
+      image.destroy
+    end
   end
 end
