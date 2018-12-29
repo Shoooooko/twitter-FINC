@@ -70,7 +70,11 @@ class User < ApplicationRecord
   end
 
   def follower_posts #自分とfollowersのpostss
-    return Post.where(user_id: followeds.pluck(:id).push(id), trans: [1, 3])
+    return Post.where(user_id: followeds.pluck(:id).push(id), trans: [1,3])
+  end
+
+  def get_posts
+    return Post.where(user_id: followeds.pluck(:id).push(id), trans: 3).or(Post.where(trans: 1))
   end
 
   def niltest(name)
