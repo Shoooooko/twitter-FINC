@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < Users::BaseController
-  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[edit update destroy]
   # GET /posts
   # GET /posts.json
   def index
@@ -12,6 +12,7 @@ class PostsController < Users::BaseController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find_by(id: params[:id])
     @images = @post.images
     @postuser = User.find_by(id: @post.user_id)
   end
@@ -74,7 +75,7 @@ class PostsController < Users::BaseController
   # DELETE /posts/1.json
   def destroy
     @post.destroy # imageも消える
-    redirect_to homes_mypage_path, notice: "投稿されました！."
+    redirect_to homes_show_path, notice: "投稿されました！."
   end
 
   private

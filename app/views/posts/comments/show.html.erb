@@ -1,7 +1,7 @@
 <p>
   <%= @commentuser.name %>さんの投稿<br>
   <%= link_to("#{@commentuser.name}さんのpage", 
-  homes_mypage_path(@commentuser.id)) %>
+  homes_show_path(@commentuser.id)) %>
 </p>
 <p>
   <strong>Comment:</strong>

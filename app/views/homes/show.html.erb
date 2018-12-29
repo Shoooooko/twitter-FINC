@@ -5,8 +5,25 @@
   <%= image_tag(@profile.picture_url,:size => "200x150") if @profile.picture.present? %>
   </p>
 <% end %>
-<%= javascript_include_tag 'post' %>
+<!--他人のpageのとき-->
+  <% if @page_user != current_user %>
+    <% if current_user.follow?(@page_user) %>
+      <%= form_with url: follow_path(@page_user.id), method: :delete do |form| %>
+        <%= form.hidden_field :followed_user_id, value: @page_user.id %>
+        <%= form.submit "フォローをやめる" %>
+      <% end %>
+    <% else %>
+      <%= form_with url: follows_path do |form| %>
+              <%= form.hidden_field :followed_user_id, value: @page_user.id %>
+              <%= form.submit "フォローする" %>
+      <% end %>
+    <% end %>
+  <% end %>
 
+
+
+<%= javascript_include_tag 'post' %>
+<br>
 <form action="http://localhost:3000/api/posts" method="post">
   <p>投稿を入力してください<br>
     <textarea name= "body" id= "ajax_body"></textarea>
@@ -28,21 +45,7 @@
       <th colspan="2"></th>
     </tr>
   </thead>
-
-
   <tbody id ='post'>
-        <% @my_post.each do |my_post| %>
-        <tr>
-          <td><%= my_post.title %></td>
-          <td><%= my_post.body %></td>
-          <td colspan="2"></td>
-          <td><%= link_to 'Show', my_post %></td>
-          <% if @page_user.id == @user.id%>
-            <td><%= link_to 'Edit', edit_post_path(my_post) %></td>
-            <td><%= link_to 'Destroy', my_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
-      <% end %>
       <% if @posts!=nil  %>
       <% @posts.each do |post| %>
         <tr>
@@ -55,7 +58,7 @@
       <% end %>
   </tbody>
 </table>
-<%= link_to('Mypage', homes_mypage_path) %>
+<%= link_to('Mypage', homes_show_path) %>
 <%= link_to('Post一覧', posts_path) %>
 <% if @page_user.id == @user.id %>
   <p class="text-right"><%= link_to 'New Post', new_post_path %></p>

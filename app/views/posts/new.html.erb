@@ -1,6 +1,6 @@
 <h1>New Post</h1>
 <% if user_signed_in? %>
-<%= link_to('Mypage', homes_mypage_path) %>
+<%= link_to('Mypage', homes_show_path) %>
 <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
 <% else %>
 <%= link_to('Login', new_user_session_path)  %>  

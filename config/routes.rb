@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   resources :fav_posts, only: %i[create destroy]
   resources :fav_comments, only: %i[create destroy]
   get "homes", to: "homes#index"
-  get "homes/mypage", to: "homes#mypage"
+  get "homes/show", to: "homes#show"
 
   namespace :api do
     post "posts", to: "posts#create"

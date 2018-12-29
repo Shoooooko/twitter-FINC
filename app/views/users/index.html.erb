@@ -11,7 +11,7 @@
               <%= form.submit "フォローをやめる" %>
             <% end %>
           </td>
-          <td><%= link_to "#{user.name}さんのページへ", homes_mypage_path(id: user.id) %></td>
+          <td><%= link_to "#{user.name}さんのページへ", homes_show_path(id: user.id) %></td>
         </tr>
       <% end %>
     <% end %>
@@ -26,10 +26,10 @@
               <%= form.submit "フォローする" %>
             <% end %>
           </td>
-          <td><%= link_to "#{user.name}さんのページへ", homes_mypage_path(id: user.id) %></td>
+          <td><%= link_to "#{user.name}さんのページへ", homes_show_path(id: user.id) %></td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
-<%= link_to('MYpage', homes_mypage_path)%>
+<%= link_to('MYpage', homes_show_path)%>
