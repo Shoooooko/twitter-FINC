@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <%= link_to('Mypage', homes_show_path) %>
+  <%= link_to('Mypage', user_path) %>
 <% else %>
   <%= link_to('Login', new_user_session_path) %>  
 <% end %>
@@ -7,7 +7,7 @@
 <p>
 <strong>User:</strong>
 <%= @postuser.name %>さんの投稿
-<%= link_to("#{@postuser.name}さんのpage", homes_show_path(id: @postuser.id)) %>
+<%= link_to("#{@postuser.name}さんのpage", user_path(id: @postuser.id)) %>
 </p>
 
 <p>
@@ -30,7 +30,10 @@
   </p>
 <% end %>
 </p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if @user.id == @post.user_id %>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+  <%= link_to('Delete', posts_path(@post), method: :delete) %>
+<% end %>
+<br>
 <%= link_to 'Back', posts_path %>
 <%= link_to 'Show_comments', post_comments_path(@post) %>

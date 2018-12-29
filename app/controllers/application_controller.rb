@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     if resource == :user
-      puts "logout"
-      homes_path # ログアウト後に遷移するpathを設定
+      users_path # ログアウト後に遷移するpathを設定
     end
   end
 end

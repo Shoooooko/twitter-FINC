@@ -75,7 +75,7 @@ class PostsController < Users::BaseController
   # DELETE /posts/1.json
   def destroy
     @post.destroy # imageも消える
-    redirect_to homes_show_path, notice: "投稿されました！."
+    redirect_to users_show_path, notice: "投稿されました！."
   end
 
   private

@@ -20,7 +20,7 @@ class Admins::SessionsController < Devise::SessionsController
 
   # protected
   def after_sign_out_path_for(_resource)
-    homes_path # ログアウト後に遷移するpathを設定
+    users_path # ログアウト後に遷移するpathを設定
   end
 
   # If you have extra params to permit, append them to the sanitizer.

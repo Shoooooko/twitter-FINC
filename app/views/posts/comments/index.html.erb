@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-<%= link_to('Mypage', homes_mypage_path) %>
+<%= link_to('Mypage', user_path(@user.id)) %>
 <% end %>
 <hr>
 <p class="text-right"><%= link_to 'New Comments', new_post_comment_path %></P>
@@ -28,7 +28,7 @@
           </td>
         <% end %>
         <td><%= link_to 'Show', post_comment_path(@post,comment)%></td>
-        <td><%= link_to 'Edit', edit_post_comment_path(@post,comment) %></td>
+        
       </li>
     </tbody>
   <% end %>
