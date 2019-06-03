@@ -1,0 +1,85 @@
+body {
+  color: orange;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.clearfix:after{
+  display: block;
+  clear: both;
+  content: "";
+}
+.tabbox{
+  margin: 0 auto;
+  width: 960px;
+}
+
+.tabs{
+  text-align: center;
+}
+
+.tab {
+  display: inline-block;          /* インラインブロック化 */
+  border-width: 1px 1px 0px 1px;  /* 上側と左右に枠線を引く */
+  border-style: solid;            /* 枠線の種類は「実線」 */
+  border-color: black;            /* 枠線の色は「黒」 */
+  border-radius: 0.75em 0.75em 0px 0px;  /* 左上と右上の角だけを丸くする */
+  padding: 0.75em 1em;            /* 内側の余白量 */
+  /*font-weight: bold;               タブの文字を太字にする */
+  color:white;      /* タブの文字色 */
+  background-color: black;      /* タブの背景色 */
+  z-index: 10;
+}
+
+.tabactive {
+  color:black;
+  background-color:#f5eeeef5;
+}
+
+
+.tabcontent {
+  display: block;            /* 標準では非表示にする */
+  border: 1px solid black;   /* 枠線を引く：黒色で1ピクセルの実線 */
+  border-radius: 5px;
+  padding: 20px;              /* 内側の余白量 */
+  background-color: #f5eeeef5; /* 背景色：タブと同じ色*/
+  margin-top: -1px;    /*少し重なりをつくって*/
+}
+
+.position{
+  margin-left: 20px;
+}
+
+.contentposition{
+  margin-top: 20px
+}
+
+/*ここからがwelfare.jpeg*/
+
+
+.container{
+  margin: 0 auto;
+  width: 960px;
+}
+
+.float{
+  float:left;
+}
+
+.content {
+    padding: 10px;
+    box-sizing: border-box;
+    width: 400px;
+    height: 400px;
+  }
+
+.content img{
+  width:100%;
+  height:100%;
+}
+
+
+.subtitle{
+  font-weight: bold;
+  font-size: 20px;
+  color: pink;
+}

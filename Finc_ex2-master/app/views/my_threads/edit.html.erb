@@ -1,0 +1,11 @@
+<h1>Editing My Thread</h1>
+
+<%= render 'form', my_thread: @my_thread %>
+
+<%= link_to 'Show', @my_thread %> |
+<%= link_to 'Back', my_threads_path %>
+<% if user_signed_in? %>
+    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+    <% else %>
+    <%= link_to('Login', new_user_session_path)  %>  
+    <% end %>
