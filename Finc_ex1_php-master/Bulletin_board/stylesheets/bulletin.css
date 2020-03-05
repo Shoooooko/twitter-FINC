@@ -1,0 +1,122 @@
+header{
+    width:100%;
+    background-color: #ffe4e1;
+    overflow: hidden;
+}
+.menu {
+    display: block;
+    width:20%;
+    font-size:50px;
+    color:#313131;
+    padding:10px;
+    letter-spacing: 2px;
+    font-weight:250;
+}
+
+.sub-menu{
+    /*margin-top:30px;*/
+    display: block;
+    padding:5px;
+    height:50px;
+    z-index: 1;
+    float:right;
+    margin-top:-60px;
+}
+.sub-menu li {
+        display:block;
+        width:23%;
+        font-size:15px;
+        padding:3px;
+        color:#313131;
+        text-align: center;
+        float:right;
+        word-break: break-all;
+        z-index: 10;
+    }
+
+h3 {
+    margin-left: 20px;
+    color:#313131;
+    font-size:20px;
+}
+
+h4{
+    margin-left: 20px;
+    font-size:15px;
+}
+
+fieldset{
+    border-block-end-width: 100%;
+    margin:20px;
+    padding:10px;
+    text-align: center;
+    font-size: 15px;
+    color:black;
+}
+legend{
+    font-weight:100;
+    text-align:left;
+    font-size:20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+label{
+    font-weight:100;
+    text-align: center;
+    font-size:15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+    font-size: 20px;
+  }
+  .clearfix:after{
+    display: block;
+    clear: both;
+    content: "";
+  }
+
+.a {
+    margin-left:20px;
+    font-style: bold;
+}
+
+input ,textarea {
+    width:50%;
+    border-width: 1px;  /* 上側と左右に枠線を引く */
+    border-style: solid;            /* 枠線の種類は「実線」 */
+    border-color: black;            /* 枠線の色は「黒」 */
+    font-size:20px;
+    margin:30px;
+    padding: 4px;            /* 内側の余白量 */
+  }
+
+
+input[type="submit"]{
+    width:30%;
+    border-width: 2px;  /* 上側と左右に枠線を引く */
+    border-style: solid;            /* 枠線の種類は「実線」 */
+    border-color: black;
+    border-radius: 3px;           /* 枠線の色は「黒」 */
+    padding: 0.75em 1em;            /* 内側の余白量 */
+}
+
+
+.login, .signup{
+    width:100%;
+    padding: 10px 20px;
+}
+
+.thread{
+    text-align: left;
+    font-size: 15px;
+    line-height: 10px;
+    margin-top:20px;
+    margin-bottom:5px;
+}
+
+.container{
+    color:black;
+    margin: 0 auto;
+    font-size: 15px;
+  }

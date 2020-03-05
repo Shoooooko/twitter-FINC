@@ -1,0 +1,31 @@
+
+<h1><%="#{@user}さんのpage"%></h1>
+<% if user_signed_in? %>
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+<% else %>
+<%= link_to('Login', new_user_session_path)  %>  
+<% end %>
+<hr>
+<p class="text-right"><%= link_to 'New My Thread', new_my_thread_path %></P>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @my_threads.each do |my_thread| %>
+      <tr>
+        <td><%= my_thread.title %></td>
+        <td><%= my_thread.body %></td>
+        <td colspan="2"></td>
+        <td><%= link_to 'Show', my_thread %></td>
+        <td><%= link_to 'Edit', edit_my_thread_path(my_thread) %></td>
+        <td><%= link_to 'Destroy', my_thread, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

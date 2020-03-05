@@ -1,0 +1,16 @@
+<h1>Users一覧</h1>
+<table class="table">
+  <tbody>
+    <% if @users.any?%>
+      <% @users.each do |user| %>
+      <tr>
+          <td><%= user.name %></td>
+          <td><%= link_to "詳細ページへ", admins_user_path(user.id) %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Logout", destroy_admin_session_path, :method => :delete %>
+

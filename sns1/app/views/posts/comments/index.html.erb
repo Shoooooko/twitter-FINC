@@ -1,0 +1,35 @@
+<% if user_signed_in? %>
+<%= link_to('Mypage', user_path(@user.id)) %>
+<% end %>
+<hr>
+<p class="text-right"><%= link_to 'New Comments', new_post_comment_path %></P>
+<p class="text-right"><%= link_to 'Back_to the post', post_path(@post) %></P>
+
+<h2>Commnent</h2>
+<%# <%= if @comments.any? %>
+  <% @comments.each do |comment| %>
+    <tbody>
+      <li>
+        <td><%= comment.body %></td>
+        <% if @user.fav_comments.where(comment_id: comment.id).exists?%>
+        <%= "いいね#{comment.fav_comments.count}件" %>
+          <td>
+            <%= form_with(url: fav_comment_path(id: comment.id),method: :delete) do |form| %>
+            <%= form.hidden_field :post, value: @post.id %>
+              <%= form.submit("いいねやめる") %>
+            <% end %>
+          </td>
+        <% else %>
+          <td>
+            <%= form_with url: fav_comments_path(id: comment.id) do |form| %>
+            <%= form.hidden_field :post, value: @post.id %>
+              <%= form.submit("いいねする") %>
+            <% end %>
+          </td>
+        <% end %>
+        <td><%= link_to 'Show', post_comment_path(@post,comment)%></td>
+        
+      </li>
+    </tbody>
+  <% end %>
+<%# <% end %>

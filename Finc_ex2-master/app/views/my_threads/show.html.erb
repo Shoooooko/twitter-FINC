@@ -1,0 +1,19 @@
+<p>
+  <strong>Title:</strong>
+  <%= @my_thread.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @my_thread.body %>
+</p>
+
+<%= link_to 'Edit', edit_my_thread_path(@my_thread) %>
+<%= link_to 'Back', my_threads_path %>
+<%= link_to 'Show_comments', my_thread_comments_path(@my_thread) %>
+<br>
+<% if user_signed_in? %>
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+<% else %>
+<%= link_to('Login', new_user_session_path)  %>
+<% end %>

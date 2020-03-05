@@ -1,0 +1,22 @@
+<%= form_for([@my_thread,@comment], local: true) do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div class="field">
+    <!%= form.hidden_field id: @comment.id %>
+    <%= form.hidden_field :my_thread_id, value: @my_thread.id %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+

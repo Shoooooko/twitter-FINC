@@ -1,0 +1,47 @@
+
+<h1>Posts</h1>
+<% if user_signed_in? %>
+  <%= link_to('Mypage', user_path(@user.id)) %>
+<% else %>
+  <%= link_to('Login', new_user_session_path)  %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td><%= "いいね#{post.fav_posts.count}件" %></td>
+        <% if @user.fav_posts.where(post_id: post.id).exists?%>
+          <td>
+            <%= form_with(url: fav_post_path(id: post.id),method: :delete) do |form| %>
+              <%= form.submit("いいねやめる") %>
+            <% end %>
+          </td>
+        <% else %>
+          <td>
+            <%= form_with url: fav_posts_path(id: post.id) do |form| %>
+              <%= form.submit("いいねする") %>
+            <% end %>
+          </td>
+        <% end %>
+
+        <td><%= link_to 'Show', post %></td>
+        <td><!%= link_to 'Edit', edit_post_path(post) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New post', new_post_path %>

@@ -1,0 +1,32 @@
+<h1><%= "#{@user}さんのpage"%></h1>
+<% if user_signed_in? %>
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+<% else %>
+<%= link_to('Login', new_user_session_path)  %>  
+<% end %>
+<hr>
+<p class="text-right"><%= link_to 'New Comments', new_my_thread_comment_path %></P>
+<p class="text-right"><%= link_to 'Back_to the thread', my_thread_path(@my_thread) %></P>
+<table class="table">
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Commnent</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.title %></td>
+        <td><%= comment.body %></td>
+        <td><%= link_to 'Show', my_thread_comment_path(@my_thread,comment)%></td>
+        <td><%= link_to 'Edit', edit_my_thread_comment_path(@my_thread,comment) %></td>
+        <td><%= link_to 'Destroy', my_thread_comment_path(@my_thread,comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
